@@ -1,22 +1,22 @@
-# lomi.PayoutsApi
+# lomi.MetersApi
 
 All URIs are relative to *https://api.lomi.africa/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_payout**](PayoutsApi.md#create_payout) | **POST** /payouts | Create payout
-[**delete_payout**](PayoutsApi.md#delete_payout) | **DELETE** /payouts/{payout_id} | Delete payout
-[**list_payouts**](PayoutsApi.md#list_payouts) | **GET** /payouts | List payouts
-[**retrieve_payout**](PayoutsApi.md#retrieve_payout) | **GET** /payouts/{payout_id} | Retrieve payout
-[**update_payout**](PayoutsApi.md#update_payout) | **PATCH** /payouts/{payout_id} | Update payout
+[**create_meter**](MetersApi.md#create_meter) | **POST** /meters | Create meter
+[**delete_meter**](MetersApi.md#delete_meter) | **DELETE** /meters/{meter_id} | Delete meter
+[**list_meters**](MetersApi.md#list_meters) | **GET** /meters | List meters
+[**retrieve_meter**](MetersApi.md#retrieve_meter) | **GET** /meters/{meter_id} | Retrieve meter
+[**update_meter**](MetersApi.md#update_meter) | **PATCH** /meters/{meter_id} | Update meter
 
 
-# **create_payout**
-> Payouts create_payout(payouts_create)
+# **create_meter**
+> Meters create_meter(meters_create)
 
-Create payout
+Create meter
 
-Payout management - transfer funds to beneficiaries
+Usage meters - track usage for usage-based billing
 
 ### Example
 
@@ -24,8 +24,8 @@ Payout management - transfer funds to beneficiaries
 
 ```python
 import lomi
-from lomi.models.payouts import Payouts
-from lomi.models.payouts_create import PayoutsCreate
+from lomi.models.meters import Meters
+from lomi.models.meters_create import MetersCreate
 from lomi.rest import ApiException
 from pprint import pprint
 
@@ -49,16 +49,16 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # Enter a context with an instance of the API client
 with lomi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = lomi.PayoutsApi(api_client)
-    payouts_create = {"amount":100000,"currency_code":"XOF","beneficiary_account_id":"acc_1234567890abcdef","description":"Monthly payout to vendor"} # PayoutsCreate | 
+    api_instance = lomi.MetersApi(api_client)
+    meters_create = {"name":"Sample meter","description":"Example meter object"} # MetersCreate | 
 
     try:
-        # Create payout
-        api_response = api_instance.create_payout(payouts_create)
-        print("The response of PayoutsApi->create_payout:\n")
+        # Create meter
+        api_response = api_instance.create_meter(meters_create)
+        print("The response of MetersApi->create_meter:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling PayoutsApi->create_payout: %s\n" % e)
+        print("Exception when calling MetersApi->create_meter: %s\n" % e)
 ```
 
 
@@ -68,11 +68,11 @@ with lomi.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payouts_create** | [**PayoutsCreate**](PayoutsCreate.md)|  | 
+ **meters_create** | [**MetersCreate**](MetersCreate.md)|  | 
 
 ### Return type
 
-[**Payouts**](Payouts.md)
+[**Meters**](Meters.md)
 
 ### Authorization
 
@@ -87,19 +87,19 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Payout successfully created |  -  |
+**201** | Meter successfully created |  -  |
 **400** | Bad request - Invalid input |  -  |
 **401** | Unauthorized - Invalid or missing API key |  -  |
 **500** | Internal server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_payout**
-> delete_payout(payout_id)
+# **delete_meter**
+> delete_meter(meter_id)
 
-Delete payout
+Delete meter
 
-Delete a specific payout. This action cannot be undone.
+Delete a specific meter. This action cannot be undone.
 
 ### Example
 
@@ -130,14 +130,14 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # Enter a context with an instance of the API client
 with lomi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = lomi.PayoutsApi(api_client)
-    payout_id = 'payout_id_example' # str | Unique identifier for the payout
+    api_instance = lomi.MetersApi(api_client)
+    meter_id = 'meter_id_example' # str | Unique identifier for the meter
 
     try:
-        # Delete payout
-        api_instance.delete_payout(payout_id)
+        # Delete meter
+        api_instance.delete_meter(meter_id)
     except Exception as e:
-        print("Exception when calling PayoutsApi->delete_payout: %s\n" % e)
+        print("Exception when calling MetersApi->delete_meter: %s\n" % e)
 ```
 
 
@@ -147,7 +147,7 @@ with lomi.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payout_id** | **str**| Unique identifier for the payout | 
+ **meter_id** | **str**| Unique identifier for the meter | 
 
 ### Return type
 
@@ -166,19 +166,19 @@ void (empty response body)
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | Payout successfully deleted |  -  |
+**204** | Meter successfully deleted |  -  |
 **401** | Unauthorized - Invalid or missing API key |  -  |
 **404** | Not found - Resource does not exist |  -  |
 **500** | Internal server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_payouts**
-> ListPayouts200Response list_payouts(limit=limit, offset=offset, sort=sort)
+# **list_meters**
+> ListMeters200Response list_meters(limit=limit, offset=offset, sort=sort)
 
-List payouts
+List meters
 
-Payout management - transfer funds to beneficiaries
+Usage meters - track usage for usage-based billing
 
 ### Example
 
@@ -186,7 +186,7 @@ Payout management - transfer funds to beneficiaries
 
 ```python
 import lomi
-from lomi.models.list_payouts200_response import ListPayouts200Response
+from lomi.models.list_meters200_response import ListMeters200Response
 from lomi.rest import ApiException
 from pprint import pprint
 
@@ -210,18 +210,18 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # Enter a context with an instance of the API client
 with lomi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = lomi.PayoutsApi(api_client)
+    api_instance = lomi.MetersApi(api_client)
     limit = 20 # int | Maximum number of items to return (1-100) (optional) (default to 20)
     offset = 0 # int | Number of items to skip for pagination (optional) (default to 0)
     sort = 'created_at:desc' # str | Sort order. Format: `field:direction` (e.g., `created_at:desc`) (optional)
 
     try:
-        # List payouts
-        api_response = api_instance.list_payouts(limit=limit, offset=offset, sort=sort)
-        print("The response of PayoutsApi->list_payouts:\n")
+        # List meters
+        api_response = api_instance.list_meters(limit=limit, offset=offset, sort=sort)
+        print("The response of MetersApi->list_meters:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling PayoutsApi->list_payouts: %s\n" % e)
+        print("Exception when calling MetersApi->list_meters: %s\n" % e)
 ```
 
 
@@ -237,7 +237,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListPayouts200Response**](ListPayouts200Response.md)
+[**ListMeters200Response**](ListMeters200Response.md)
 
 ### Authorization
 
@@ -258,12 +258,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **retrieve_payout**
-> Payouts retrieve_payout(payout_id)
+# **retrieve_meter**
+> Meters retrieve_meter(meter_id)
 
-Retrieve payout
+Retrieve meter
 
-Retrieve a specific payout by its unique identifier.
+Retrieve a specific meter by its unique identifier.
 
 ### Example
 
@@ -271,7 +271,7 @@ Retrieve a specific payout by its unique identifier.
 
 ```python
 import lomi
-from lomi.models.payouts import Payouts
+from lomi.models.meters import Meters
 from lomi.rest import ApiException
 from pprint import pprint
 
@@ -295,16 +295,16 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # Enter a context with an instance of the API client
 with lomi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = lomi.PayoutsApi(api_client)
-    payout_id = 'payout_id_example' # str | Unique identifier for the payout
+    api_instance = lomi.MetersApi(api_client)
+    meter_id = 'meter_id_example' # str | Unique identifier for the meter
 
     try:
-        # Retrieve payout
-        api_response = api_instance.retrieve_payout(payout_id)
-        print("The response of PayoutsApi->retrieve_payout:\n")
+        # Retrieve meter
+        api_response = api_instance.retrieve_meter(meter_id)
+        print("The response of MetersApi->retrieve_meter:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling PayoutsApi->retrieve_payout: %s\n" % e)
+        print("Exception when calling MetersApi->retrieve_meter: %s\n" % e)
 ```
 
 
@@ -314,11 +314,11 @@ with lomi.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payout_id** | **str**| Unique identifier for the payout | 
+ **meter_id** | **str**| Unique identifier for the meter | 
 
 ### Return type
 
-[**Payouts**](Payouts.md)
+[**Meters**](Meters.md)
 
 ### Authorization
 
@@ -333,19 +333,19 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Payout retrieved successfully |  -  |
+**200** | Meter retrieved successfully |  -  |
 **401** | Unauthorized - Invalid or missing API key |  -  |
 **404** | Not found - Resource does not exist |  -  |
 **500** | Internal server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_payout**
-> Payouts update_payout(payout_id, payouts_update)
+# **update_meter**
+> Meters update_meter(meter_id, meters_update)
 
-Update payout
+Update meter
 
-Update a specific payout. Only provided fields will be updated.
+Update a specific meter. Only provided fields will be updated.
 
 ### Example
 
@@ -353,8 +353,8 @@ Update a specific payout. Only provided fields will be updated.
 
 ```python
 import lomi
-from lomi.models.payouts import Payouts
-from lomi.models.payouts_update import PayoutsUpdate
+from lomi.models.meters import Meters
+from lomi.models.meters_update import MetersUpdate
 from lomi.rest import ApiException
 from pprint import pprint
 
@@ -378,17 +378,17 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # Enter a context with an instance of the API client
 with lomi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = lomi.PayoutsApi(api_client)
-    payout_id = 'payout_id_example' # str | Unique identifier for the payout
-    payouts_update = {"metadata":{"updated_at":"2025-11-21T13:32:16.240Z","updated_reason":"Administrative update"}} # PayoutsUpdate | 
+    api_instance = lomi.MetersApi(api_client)
+    meter_id = 'meter_id_example' # str | Unique identifier for the meter
+    meters_update = {"metadata":{"updated_at":"2025-11-21T13:32:16.241Z","updated_reason":"Administrative update"}} # MetersUpdate | 
 
     try:
-        # Update payout
-        api_response = api_instance.update_payout(payout_id, payouts_update)
-        print("The response of PayoutsApi->update_payout:\n")
+        # Update meter
+        api_response = api_instance.update_meter(meter_id, meters_update)
+        print("The response of MetersApi->update_meter:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling PayoutsApi->update_payout: %s\n" % e)
+        print("Exception when calling MetersApi->update_meter: %s\n" % e)
 ```
 
 
@@ -398,12 +398,12 @@ with lomi.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payout_id** | **str**| Unique identifier for the payout | 
- **payouts_update** | [**PayoutsUpdate**](PayoutsUpdate.md)|  | 
+ **meter_id** | **str**| Unique identifier for the meter | 
+ **meters_update** | [**MetersUpdate**](MetersUpdate.md)|  | 
 
 ### Return type
 
-[**Payouts**](Payouts.md)
+[**Meters**](Meters.md)
 
 ### Authorization
 
@@ -418,7 +418,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Payout successfully updated |  -  |
+**200** | Meter successfully updated |  -  |
 **400** | Bad request - Invalid input |  -  |
 **401** | Unauthorized - Invalid or missing API key |  -  |
 **404** | Not found - Resource does not exist |  -  |

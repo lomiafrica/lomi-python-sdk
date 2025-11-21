@@ -1,22 +1,22 @@
-# lomi.PayoutsApi
+# lomi.PricesApi
 
 All URIs are relative to *https://api.lomi.africa/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_payout**](PayoutsApi.md#create_payout) | **POST** /payouts | Create payout
-[**delete_payout**](PayoutsApi.md#delete_payout) | **DELETE** /payouts/{payout_id} | Delete payout
-[**list_payouts**](PayoutsApi.md#list_payouts) | **GET** /payouts | List payouts
-[**retrieve_payout**](PayoutsApi.md#retrieve_payout) | **GET** /payouts/{payout_id} | Retrieve payout
-[**update_payout**](PayoutsApi.md#update_payout) | **PATCH** /payouts/{payout_id} | Update payout
+[**create_price**](PricesApi.md#create_price) | **POST** /prices | Create price
+[**delete_price**](PricesApi.md#delete_price) | **DELETE** /prices/{price_id} | Delete price
+[**list_prices**](PricesApi.md#list_prices) | **GET** /prices | List prices
+[**retrieve_price**](PricesApi.md#retrieve_price) | **GET** /prices/{price_id} | Retrieve price
+[**update_price**](PricesApi.md#update_price) | **PATCH** /prices/{price_id} | Update price
 
 
-# **create_payout**
-> Payouts create_payout(payouts_create)
+# **create_price**
+> Prices create_price(prices_create)
 
-Create payout
+Create price
 
-Payout management - transfer funds to beneficiaries
+Pricing tiers - manage product pricing
 
 ### Example
 
@@ -24,8 +24,8 @@ Payout management - transfer funds to beneficiaries
 
 ```python
 import lomi
-from lomi.models.payouts import Payouts
-from lomi.models.payouts_create import PayoutsCreate
+from lomi.models.prices import Prices
+from lomi.models.prices_create import PricesCreate
 from lomi.rest import ApiException
 from pprint import pprint
 
@@ -49,16 +49,16 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # Enter a context with an instance of the API client
 with lomi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = lomi.PayoutsApi(api_client)
-    payouts_create = {"amount":100000,"currency_code":"XOF","beneficiary_account_id":"acc_1234567890abcdef","description":"Monthly payout to vendor"} # PayoutsCreate | 
+    api_instance = lomi.PricesApi(api_client)
+    prices_create = {"product_id":"prod_1234567890abcdef","amount":5000,"currency_code":"XOF","pricing_model":"flat_rate","billing_frequency":"monthly","is_active":true} # PricesCreate | 
 
     try:
-        # Create payout
-        api_response = api_instance.create_payout(payouts_create)
-        print("The response of PayoutsApi->create_payout:\n")
+        # Create price
+        api_response = api_instance.create_price(prices_create)
+        print("The response of PricesApi->create_price:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling PayoutsApi->create_payout: %s\n" % e)
+        print("Exception when calling PricesApi->create_price: %s\n" % e)
 ```
 
 
@@ -68,11 +68,11 @@ with lomi.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payouts_create** | [**PayoutsCreate**](PayoutsCreate.md)|  | 
+ **prices_create** | [**PricesCreate**](PricesCreate.md)|  | 
 
 ### Return type
 
-[**Payouts**](Payouts.md)
+[**Prices**](Prices.md)
 
 ### Authorization
 
@@ -87,19 +87,19 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Payout successfully created |  -  |
+**201** | Price successfully created |  -  |
 **400** | Bad request - Invalid input |  -  |
 **401** | Unauthorized - Invalid or missing API key |  -  |
 **500** | Internal server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_payout**
-> delete_payout(payout_id)
+# **delete_price**
+> delete_price(price_id)
 
-Delete payout
+Delete price
 
-Delete a specific payout. This action cannot be undone.
+Delete a specific price. This action cannot be undone.
 
 ### Example
 
@@ -130,14 +130,14 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # Enter a context with an instance of the API client
 with lomi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = lomi.PayoutsApi(api_client)
-    payout_id = 'payout_id_example' # str | Unique identifier for the payout
+    api_instance = lomi.PricesApi(api_client)
+    price_id = 'price_id_example' # str | Unique identifier for the price
 
     try:
-        # Delete payout
-        api_instance.delete_payout(payout_id)
+        # Delete price
+        api_instance.delete_price(price_id)
     except Exception as e:
-        print("Exception when calling PayoutsApi->delete_payout: %s\n" % e)
+        print("Exception when calling PricesApi->delete_price: %s\n" % e)
 ```
 
 
@@ -147,7 +147,7 @@ with lomi.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payout_id** | **str**| Unique identifier for the payout | 
+ **price_id** | **str**| Unique identifier for the price | 
 
 ### Return type
 
@@ -166,19 +166,19 @@ void (empty response body)
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | Payout successfully deleted |  -  |
+**204** | Price successfully deleted |  -  |
 **401** | Unauthorized - Invalid or missing API key |  -  |
 **404** | Not found - Resource does not exist |  -  |
 **500** | Internal server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_payouts**
-> ListPayouts200Response list_payouts(limit=limit, offset=offset, sort=sort)
+# **list_prices**
+> ListPrices200Response list_prices(limit=limit, offset=offset, sort=sort)
 
-List payouts
+List prices
 
-Payout management - transfer funds to beneficiaries
+Pricing tiers - manage product pricing
 
 ### Example
 
@@ -186,7 +186,7 @@ Payout management - transfer funds to beneficiaries
 
 ```python
 import lomi
-from lomi.models.list_payouts200_response import ListPayouts200Response
+from lomi.models.list_prices200_response import ListPrices200Response
 from lomi.rest import ApiException
 from pprint import pprint
 
@@ -210,18 +210,18 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # Enter a context with an instance of the API client
 with lomi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = lomi.PayoutsApi(api_client)
+    api_instance = lomi.PricesApi(api_client)
     limit = 20 # int | Maximum number of items to return (1-100) (optional) (default to 20)
     offset = 0 # int | Number of items to skip for pagination (optional) (default to 0)
     sort = 'created_at:desc' # str | Sort order. Format: `field:direction` (e.g., `created_at:desc`) (optional)
 
     try:
-        # List payouts
-        api_response = api_instance.list_payouts(limit=limit, offset=offset, sort=sort)
-        print("The response of PayoutsApi->list_payouts:\n")
+        # List prices
+        api_response = api_instance.list_prices(limit=limit, offset=offset, sort=sort)
+        print("The response of PricesApi->list_prices:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling PayoutsApi->list_payouts: %s\n" % e)
+        print("Exception when calling PricesApi->list_prices: %s\n" % e)
 ```
 
 
@@ -237,7 +237,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListPayouts200Response**](ListPayouts200Response.md)
+[**ListPrices200Response**](ListPrices200Response.md)
 
 ### Authorization
 
@@ -258,12 +258,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **retrieve_payout**
-> Payouts retrieve_payout(payout_id)
+# **retrieve_price**
+> Prices retrieve_price(price_id)
 
-Retrieve payout
+Retrieve price
 
-Retrieve a specific payout by its unique identifier.
+Retrieve a specific price by its unique identifier.
 
 ### Example
 
@@ -271,7 +271,7 @@ Retrieve a specific payout by its unique identifier.
 
 ```python
 import lomi
-from lomi.models.payouts import Payouts
+from lomi.models.prices import Prices
 from lomi.rest import ApiException
 from pprint import pprint
 
@@ -295,16 +295,16 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # Enter a context with an instance of the API client
 with lomi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = lomi.PayoutsApi(api_client)
-    payout_id = 'payout_id_example' # str | Unique identifier for the payout
+    api_instance = lomi.PricesApi(api_client)
+    price_id = 'price_id_example' # str | Unique identifier for the price
 
     try:
-        # Retrieve payout
-        api_response = api_instance.retrieve_payout(payout_id)
-        print("The response of PayoutsApi->retrieve_payout:\n")
+        # Retrieve price
+        api_response = api_instance.retrieve_price(price_id)
+        print("The response of PricesApi->retrieve_price:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling PayoutsApi->retrieve_payout: %s\n" % e)
+        print("Exception when calling PricesApi->retrieve_price: %s\n" % e)
 ```
 
 
@@ -314,11 +314,11 @@ with lomi.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payout_id** | **str**| Unique identifier for the payout | 
+ **price_id** | **str**| Unique identifier for the price | 
 
 ### Return type
 
-[**Payouts**](Payouts.md)
+[**Prices**](Prices.md)
 
 ### Authorization
 
@@ -333,19 +333,19 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Payout retrieved successfully |  -  |
+**200** | Price retrieved successfully |  -  |
 **401** | Unauthorized - Invalid or missing API key |  -  |
 **404** | Not found - Resource does not exist |  -  |
 **500** | Internal server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_payout**
-> Payouts update_payout(payout_id, payouts_update)
+# **update_price**
+> Prices update_price(price_id, prices_update)
 
-Update payout
+Update price
 
-Update a specific payout. Only provided fields will be updated.
+Update a specific price. Only provided fields will be updated.
 
 ### Example
 
@@ -353,8 +353,8 @@ Update a specific payout. Only provided fields will be updated.
 
 ```python
 import lomi
-from lomi.models.payouts import Payouts
-from lomi.models.payouts_update import PayoutsUpdate
+from lomi.models.prices import Prices
+from lomi.models.prices_update import PricesUpdate
 from lomi.rest import ApiException
 from pprint import pprint
 
@@ -378,17 +378,17 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # Enter a context with an instance of the API client
 with lomi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = lomi.PayoutsApi(api_client)
-    payout_id = 'payout_id_example' # str | Unique identifier for the payout
-    payouts_update = {"metadata":{"updated_at":"2025-11-21T13:32:16.240Z","updated_reason":"Administrative update"}} # PayoutsUpdate | 
+    api_instance = lomi.PricesApi(api_client)
+    price_id = 'price_id_example' # str | Unique identifier for the price
+    prices_update = {"is_active":false} # PricesUpdate | 
 
     try:
-        # Update payout
-        api_response = api_instance.update_payout(payout_id, payouts_update)
-        print("The response of PayoutsApi->update_payout:\n")
+        # Update price
+        api_response = api_instance.update_price(price_id, prices_update)
+        print("The response of PricesApi->update_price:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling PayoutsApi->update_payout: %s\n" % e)
+        print("Exception when calling PricesApi->update_price: %s\n" % e)
 ```
 
 
@@ -398,12 +398,12 @@ with lomi.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payout_id** | **str**| Unique identifier for the payout | 
- **payouts_update** | [**PayoutsUpdate**](PayoutsUpdate.md)|  | 
+ **price_id** | **str**| Unique identifier for the price | 
+ **prices_update** | [**PricesUpdate**](PricesUpdate.md)|  | 
 
 ### Return type
 
-[**Payouts**](Payouts.md)
+[**Prices**](Prices.md)
 
 ### Authorization
 
@@ -418,7 +418,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Payout successfully updated |  -  |
+**200** | Price successfully updated |  -  |
 **400** | Bad request - Invalid input |  -  |
 **401** | Unauthorized - Invalid or missing API key |  -  |
 **404** | Not found - Resource does not exist |  -  |

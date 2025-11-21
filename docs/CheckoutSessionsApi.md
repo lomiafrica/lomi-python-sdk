@@ -1,22 +1,22 @@
-# lomi.PayoutsApi
+# lomi.CheckoutSessionsApi
 
 All URIs are relative to *https://api.lomi.africa/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_payout**](PayoutsApi.md#create_payout) | **POST** /payouts | Create payout
-[**delete_payout**](PayoutsApi.md#delete_payout) | **DELETE** /payouts/{payout_id} | Delete payout
-[**list_payouts**](PayoutsApi.md#list_payouts) | **GET** /payouts | List payouts
-[**retrieve_payout**](PayoutsApi.md#retrieve_payout) | **GET** /payouts/{payout_id} | Retrieve payout
-[**update_payout**](PayoutsApi.md#update_payout) | **PATCH** /payouts/{payout_id} | Update payout
+[**create_checkout_session**](CheckoutSessionsApi.md#create_checkout_session) | **POST** /checkout_sessions | Create checkout session
+[**delete_checkout_session**](CheckoutSessionsApi.md#delete_checkout_session) | **DELETE** /checkout_sessions/{session_id} | Delete checkout session
+[**list_checkout_sessions**](CheckoutSessionsApi.md#list_checkout_sessions) | **GET** /checkout_sessions | List checkout sessions
+[**retrieve_checkout_session**](CheckoutSessionsApi.md#retrieve_checkout_session) | **GET** /checkout_sessions/{session_id} | Retrieve checkout session
+[**update_checkout_session**](CheckoutSessionsApi.md#update_checkout_session) | **PATCH** /checkout_sessions/{session_id} | Update checkout session
 
 
-# **create_payout**
-> Payouts create_payout(payouts_create)
+# **create_checkout_session**
+> CheckoutSessions create_checkout_session(checkout_sessions_create)
 
-Create payout
+Create checkout session
 
-Payout management - transfer funds to beneficiaries
+Checkout sessions - create hosted payment pages
 
 ### Example
 
@@ -24,8 +24,8 @@ Payout management - transfer funds to beneficiaries
 
 ```python
 import lomi
-from lomi.models.payouts import Payouts
-from lomi.models.payouts_create import PayoutsCreate
+from lomi.models.checkout_sessions import CheckoutSessions
+from lomi.models.checkout_sessions_create import CheckoutSessionsCreate
 from lomi.rest import ApiException
 from pprint import pprint
 
@@ -49,16 +49,16 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # Enter a context with an instance of the API client
 with lomi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = lomi.PayoutsApi(api_client)
-    payouts_create = {"amount":100000,"currency_code":"XOF","beneficiary_account_id":"acc_1234567890abcdef","description":"Monthly payout to vendor"} # PayoutsCreate | 
+    api_instance = lomi.CheckoutSessionsApi(api_client)
+    checkout_sessions_create = {"amount":15000,"currency_code":"XOF","product_id":"prod_1234567890abcdef","success_url":"https://example.com/success","cancel_url":"https://example.com/cancel","customer_email":"customer@example.com"} # CheckoutSessionsCreate | 
 
     try:
-        # Create payout
-        api_response = api_instance.create_payout(payouts_create)
-        print("The response of PayoutsApi->create_payout:\n")
+        # Create checkout session
+        api_response = api_instance.create_checkout_session(checkout_sessions_create)
+        print("The response of CheckoutSessionsApi->create_checkout_session:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling PayoutsApi->create_payout: %s\n" % e)
+        print("Exception when calling CheckoutSessionsApi->create_checkout_session: %s\n" % e)
 ```
 
 
@@ -68,11 +68,11 @@ with lomi.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payouts_create** | [**PayoutsCreate**](PayoutsCreate.md)|  | 
+ **checkout_sessions_create** | [**CheckoutSessionsCreate**](CheckoutSessionsCreate.md)|  | 
 
 ### Return type
 
-[**Payouts**](Payouts.md)
+[**CheckoutSessions**](CheckoutSessions.md)
 
 ### Authorization
 
@@ -87,19 +87,19 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Payout successfully created |  -  |
+**201** | Checkout_session successfully created |  -  |
 **400** | Bad request - Invalid input |  -  |
 **401** | Unauthorized - Invalid or missing API key |  -  |
 **500** | Internal server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_payout**
-> delete_payout(payout_id)
+# **delete_checkout_session**
+> delete_checkout_session(session_id)
 
-Delete payout
+Delete checkout session
 
-Delete a specific payout. This action cannot be undone.
+Delete a specific checkout session. This action cannot be undone.
 
 ### Example
 
@@ -130,14 +130,14 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # Enter a context with an instance of the API client
 with lomi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = lomi.PayoutsApi(api_client)
-    payout_id = 'payout_id_example' # str | Unique identifier for the payout
+    api_instance = lomi.CheckoutSessionsApi(api_client)
+    session_id = 'session_id_example' # str | Unique identifier for the checkout session
 
     try:
-        # Delete payout
-        api_instance.delete_payout(payout_id)
+        # Delete checkout session
+        api_instance.delete_checkout_session(session_id)
     except Exception as e:
-        print("Exception when calling PayoutsApi->delete_payout: %s\n" % e)
+        print("Exception when calling CheckoutSessionsApi->delete_checkout_session: %s\n" % e)
 ```
 
 
@@ -147,7 +147,7 @@ with lomi.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payout_id** | **str**| Unique identifier for the payout | 
+ **session_id** | **str**| Unique identifier for the checkout session | 
 
 ### Return type
 
@@ -166,19 +166,19 @@ void (empty response body)
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | Payout successfully deleted |  -  |
+**204** | Checkout_session successfully deleted |  -  |
 **401** | Unauthorized - Invalid or missing API key |  -  |
 **404** | Not found - Resource does not exist |  -  |
 **500** | Internal server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_payouts**
-> ListPayouts200Response list_payouts(limit=limit, offset=offset, sort=sort)
+# **list_checkout_sessions**
+> ListCheckoutSessions200Response list_checkout_sessions(limit=limit, offset=offset, sort=sort)
 
-List payouts
+List checkout sessions
 
-Payout management - transfer funds to beneficiaries
+Checkout sessions - create hosted payment pages
 
 ### Example
 
@@ -186,7 +186,7 @@ Payout management - transfer funds to beneficiaries
 
 ```python
 import lomi
-from lomi.models.list_payouts200_response import ListPayouts200Response
+from lomi.models.list_checkout_sessions200_response import ListCheckoutSessions200Response
 from lomi.rest import ApiException
 from pprint import pprint
 
@@ -210,18 +210,18 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # Enter a context with an instance of the API client
 with lomi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = lomi.PayoutsApi(api_client)
+    api_instance = lomi.CheckoutSessionsApi(api_client)
     limit = 20 # int | Maximum number of items to return (1-100) (optional) (default to 20)
     offset = 0 # int | Number of items to skip for pagination (optional) (default to 0)
     sort = 'created_at:desc' # str | Sort order. Format: `field:direction` (e.g., `created_at:desc`) (optional)
 
     try:
-        # List payouts
-        api_response = api_instance.list_payouts(limit=limit, offset=offset, sort=sort)
-        print("The response of PayoutsApi->list_payouts:\n")
+        # List checkout sessions
+        api_response = api_instance.list_checkout_sessions(limit=limit, offset=offset, sort=sort)
+        print("The response of CheckoutSessionsApi->list_checkout_sessions:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling PayoutsApi->list_payouts: %s\n" % e)
+        print("Exception when calling CheckoutSessionsApi->list_checkout_sessions: %s\n" % e)
 ```
 
 
@@ -237,7 +237,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListPayouts200Response**](ListPayouts200Response.md)
+[**ListCheckoutSessions200Response**](ListCheckoutSessions200Response.md)
 
 ### Authorization
 
@@ -258,12 +258,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **retrieve_payout**
-> Payouts retrieve_payout(payout_id)
+# **retrieve_checkout_session**
+> CheckoutSessions retrieve_checkout_session(session_id)
 
-Retrieve payout
+Retrieve checkout session
 
-Retrieve a specific payout by its unique identifier.
+Retrieve a specific checkout session by its unique identifier.
 
 ### Example
 
@@ -271,7 +271,7 @@ Retrieve a specific payout by its unique identifier.
 
 ```python
 import lomi
-from lomi.models.payouts import Payouts
+from lomi.models.checkout_sessions import CheckoutSessions
 from lomi.rest import ApiException
 from pprint import pprint
 
@@ -295,16 +295,16 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # Enter a context with an instance of the API client
 with lomi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = lomi.PayoutsApi(api_client)
-    payout_id = 'payout_id_example' # str | Unique identifier for the payout
+    api_instance = lomi.CheckoutSessionsApi(api_client)
+    session_id = 'session_id_example' # str | Unique identifier for the checkout session
 
     try:
-        # Retrieve payout
-        api_response = api_instance.retrieve_payout(payout_id)
-        print("The response of PayoutsApi->retrieve_payout:\n")
+        # Retrieve checkout session
+        api_response = api_instance.retrieve_checkout_session(session_id)
+        print("The response of CheckoutSessionsApi->retrieve_checkout_session:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling PayoutsApi->retrieve_payout: %s\n" % e)
+        print("Exception when calling CheckoutSessionsApi->retrieve_checkout_session: %s\n" % e)
 ```
 
 
@@ -314,11 +314,11 @@ with lomi.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payout_id** | **str**| Unique identifier for the payout | 
+ **session_id** | **str**| Unique identifier for the checkout session | 
 
 ### Return type
 
-[**Payouts**](Payouts.md)
+[**CheckoutSessions**](CheckoutSessions.md)
 
 ### Authorization
 
@@ -333,19 +333,19 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Payout retrieved successfully |  -  |
+**200** | Checkout_session retrieved successfully |  -  |
 **401** | Unauthorized - Invalid or missing API key |  -  |
 **404** | Not found - Resource does not exist |  -  |
 **500** | Internal server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_payout**
-> Payouts update_payout(payout_id, payouts_update)
+# **update_checkout_session**
+> CheckoutSessions update_checkout_session(session_id, checkout_sessions_update)
 
-Update payout
+Update checkout session
 
-Update a specific payout. Only provided fields will be updated.
+Update a specific checkout session. Only provided fields will be updated.
 
 ### Example
 
@@ -353,8 +353,8 @@ Update a specific payout. Only provided fields will be updated.
 
 ```python
 import lomi
-from lomi.models.payouts import Payouts
-from lomi.models.payouts_update import PayoutsUpdate
+from lomi.models.checkout_sessions import CheckoutSessions
+from lomi.models.checkout_sessions_update import CheckoutSessionsUpdate
 from lomi.rest import ApiException
 from pprint import pprint
 
@@ -378,17 +378,17 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # Enter a context with an instance of the API client
 with lomi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = lomi.PayoutsApi(api_client)
-    payout_id = 'payout_id_example' # str | Unique identifier for the payout
-    payouts_update = {"metadata":{"updated_at":"2025-11-21T13:32:16.240Z","updated_reason":"Administrative update"}} # PayoutsUpdate | 
+    api_instance = lomi.CheckoutSessionsApi(api_client)
+    session_id = 'session_id_example' # str | Unique identifier for the checkout session
+    checkout_sessions_update = {"metadata":{"updated_at":"2025-11-21T13:32:16.240Z","updated_reason":"Administrative update"}} # CheckoutSessionsUpdate | 
 
     try:
-        # Update payout
-        api_response = api_instance.update_payout(payout_id, payouts_update)
-        print("The response of PayoutsApi->update_payout:\n")
+        # Update checkout session
+        api_response = api_instance.update_checkout_session(session_id, checkout_sessions_update)
+        print("The response of CheckoutSessionsApi->update_checkout_session:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling PayoutsApi->update_payout: %s\n" % e)
+        print("Exception when calling CheckoutSessionsApi->update_checkout_session: %s\n" % e)
 ```
 
 
@@ -398,12 +398,12 @@ with lomi.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payout_id** | **str**| Unique identifier for the payout | 
- **payouts_update** | [**PayoutsUpdate**](PayoutsUpdate.md)|  | 
+ **session_id** | **str**| Unique identifier for the checkout session | 
+ **checkout_sessions_update** | [**CheckoutSessionsUpdate**](CheckoutSessionsUpdate.md)|  | 
 
 ### Return type
 
-[**Payouts**](Payouts.md)
+[**CheckoutSessions**](CheckoutSessions.md)
 
 ### Authorization
 
@@ -418,7 +418,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Payout successfully updated |  -  |
+**200** | Checkout_session successfully updated |  -  |
 **400** | Bad request - Invalid input |  -  |
 **401** | Unauthorized - Invalid or missing API key |  -  |
 **404** | Not found - Resource does not exist |  -  |

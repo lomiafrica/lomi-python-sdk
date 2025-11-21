@@ -1,22 +1,22 @@
-# lomi.PayoutsApi
+# lomi.PaymentLinksApi
 
 All URIs are relative to *https://api.lomi.africa/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_payout**](PayoutsApi.md#create_payout) | **POST** /payouts | Create payout
-[**delete_payout**](PayoutsApi.md#delete_payout) | **DELETE** /payouts/{payout_id} | Delete payout
-[**list_payouts**](PayoutsApi.md#list_payouts) | **GET** /payouts | List payouts
-[**retrieve_payout**](PayoutsApi.md#retrieve_payout) | **GET** /payouts/{payout_id} | Retrieve payout
-[**update_payout**](PayoutsApi.md#update_payout) | **PATCH** /payouts/{payout_id} | Update payout
+[**create_payment_link**](PaymentLinksApi.md#create_payment_link) | **POST** /payment_links | Create payment link
+[**delete_payment_link**](PaymentLinksApi.md#delete_payment_link) | **DELETE** /payment_links/{link_id} | Delete payment link
+[**list_payment_links**](PaymentLinksApi.md#list_payment_links) | **GET** /payment_links | List payment links
+[**retrieve_payment_link**](PaymentLinksApi.md#retrieve_payment_link) | **GET** /payment_links/{link_id} | Retrieve payment link
+[**update_payment_link**](PaymentLinksApi.md#update_payment_link) | **PATCH** /payment_links/{link_id} | Update payment link
 
 
-# **create_payout**
-> Payouts create_payout(payouts_create)
+# **create_payment_link**
+> PaymentLinks create_payment_link(payment_links_create)
 
-Create payout
+Create payment link
 
-Payout management - transfer funds to beneficiaries
+Payment links - shareable payment URLs
 
 ### Example
 
@@ -24,8 +24,8 @@ Payout management - transfer funds to beneficiaries
 
 ```python
 import lomi
-from lomi.models.payouts import Payouts
-from lomi.models.payouts_create import PayoutsCreate
+from lomi.models.payment_links import PaymentLinks
+from lomi.models.payment_links_create import PaymentLinksCreate
 from lomi.rest import ApiException
 from pprint import pprint
 
@@ -49,16 +49,16 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # Enter a context with an instance of the API client
 with lomi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = lomi.PayoutsApi(api_client)
-    payouts_create = {"amount":100000,"currency_code":"XOF","beneficiary_account_id":"acc_1234567890abcdef","description":"Monthly payout to vendor"} # PayoutsCreate | 
+    api_instance = lomi.PaymentLinksApi(api_client)
+    payment_links_create = {"title":"Premium Membership","amount":50000,"currency_code":"XOF","description":"Annual premium membership","product_id":"prod_1234567890abcdef"} # PaymentLinksCreate | 
 
     try:
-        # Create payout
-        api_response = api_instance.create_payout(payouts_create)
-        print("The response of PayoutsApi->create_payout:\n")
+        # Create payment link
+        api_response = api_instance.create_payment_link(payment_links_create)
+        print("The response of PaymentLinksApi->create_payment_link:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling PayoutsApi->create_payout: %s\n" % e)
+        print("Exception when calling PaymentLinksApi->create_payment_link: %s\n" % e)
 ```
 
 
@@ -68,11 +68,11 @@ with lomi.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payouts_create** | [**PayoutsCreate**](PayoutsCreate.md)|  | 
+ **payment_links_create** | [**PaymentLinksCreate**](PaymentLinksCreate.md)|  | 
 
 ### Return type
 
-[**Payouts**](Payouts.md)
+[**PaymentLinks**](PaymentLinks.md)
 
 ### Authorization
 
@@ -87,19 +87,19 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Payout successfully created |  -  |
+**201** | Payment_link successfully created |  -  |
 **400** | Bad request - Invalid input |  -  |
 **401** | Unauthorized - Invalid or missing API key |  -  |
 **500** | Internal server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_payout**
-> delete_payout(payout_id)
+# **delete_payment_link**
+> delete_payment_link(link_id)
 
-Delete payout
+Delete payment link
 
-Delete a specific payout. This action cannot be undone.
+Delete a specific payment link. This action cannot be undone.
 
 ### Example
 
@@ -130,14 +130,14 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # Enter a context with an instance of the API client
 with lomi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = lomi.PayoutsApi(api_client)
-    payout_id = 'payout_id_example' # str | Unique identifier for the payout
+    api_instance = lomi.PaymentLinksApi(api_client)
+    link_id = 'link_id_example' # str | Unique identifier for the payment link
 
     try:
-        # Delete payout
-        api_instance.delete_payout(payout_id)
+        # Delete payment link
+        api_instance.delete_payment_link(link_id)
     except Exception as e:
-        print("Exception when calling PayoutsApi->delete_payout: %s\n" % e)
+        print("Exception when calling PaymentLinksApi->delete_payment_link: %s\n" % e)
 ```
 
 
@@ -147,7 +147,7 @@ with lomi.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payout_id** | **str**| Unique identifier for the payout | 
+ **link_id** | **str**| Unique identifier for the payment link | 
 
 ### Return type
 
@@ -166,19 +166,19 @@ void (empty response body)
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | Payout successfully deleted |  -  |
+**204** | Payment_link successfully deleted |  -  |
 **401** | Unauthorized - Invalid or missing API key |  -  |
 **404** | Not found - Resource does not exist |  -  |
 **500** | Internal server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_payouts**
-> ListPayouts200Response list_payouts(limit=limit, offset=offset, sort=sort)
+# **list_payment_links**
+> ListPaymentLinks200Response list_payment_links(limit=limit, offset=offset, sort=sort)
 
-List payouts
+List payment links
 
-Payout management - transfer funds to beneficiaries
+Payment links - shareable payment URLs
 
 ### Example
 
@@ -186,7 +186,7 @@ Payout management - transfer funds to beneficiaries
 
 ```python
 import lomi
-from lomi.models.list_payouts200_response import ListPayouts200Response
+from lomi.models.list_payment_links200_response import ListPaymentLinks200Response
 from lomi.rest import ApiException
 from pprint import pprint
 
@@ -210,18 +210,18 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # Enter a context with an instance of the API client
 with lomi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = lomi.PayoutsApi(api_client)
+    api_instance = lomi.PaymentLinksApi(api_client)
     limit = 20 # int | Maximum number of items to return (1-100) (optional) (default to 20)
     offset = 0 # int | Number of items to skip for pagination (optional) (default to 0)
     sort = 'created_at:desc' # str | Sort order. Format: `field:direction` (e.g., `created_at:desc`) (optional)
 
     try:
-        # List payouts
-        api_response = api_instance.list_payouts(limit=limit, offset=offset, sort=sort)
-        print("The response of PayoutsApi->list_payouts:\n")
+        # List payment links
+        api_response = api_instance.list_payment_links(limit=limit, offset=offset, sort=sort)
+        print("The response of PaymentLinksApi->list_payment_links:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling PayoutsApi->list_payouts: %s\n" % e)
+        print("Exception when calling PaymentLinksApi->list_payment_links: %s\n" % e)
 ```
 
 
@@ -237,7 +237,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListPayouts200Response**](ListPayouts200Response.md)
+[**ListPaymentLinks200Response**](ListPaymentLinks200Response.md)
 
 ### Authorization
 
@@ -258,12 +258,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **retrieve_payout**
-> Payouts retrieve_payout(payout_id)
+# **retrieve_payment_link**
+> PaymentLinks retrieve_payment_link(link_id)
 
-Retrieve payout
+Retrieve payment link
 
-Retrieve a specific payout by its unique identifier.
+Retrieve a specific payment link by its unique identifier.
 
 ### Example
 
@@ -271,7 +271,7 @@ Retrieve a specific payout by its unique identifier.
 
 ```python
 import lomi
-from lomi.models.payouts import Payouts
+from lomi.models.payment_links import PaymentLinks
 from lomi.rest import ApiException
 from pprint import pprint
 
@@ -295,16 +295,16 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # Enter a context with an instance of the API client
 with lomi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = lomi.PayoutsApi(api_client)
-    payout_id = 'payout_id_example' # str | Unique identifier for the payout
+    api_instance = lomi.PaymentLinksApi(api_client)
+    link_id = 'link_id_example' # str | Unique identifier for the payment link
 
     try:
-        # Retrieve payout
-        api_response = api_instance.retrieve_payout(payout_id)
-        print("The response of PayoutsApi->retrieve_payout:\n")
+        # Retrieve payment link
+        api_response = api_instance.retrieve_payment_link(link_id)
+        print("The response of PaymentLinksApi->retrieve_payment_link:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling PayoutsApi->retrieve_payout: %s\n" % e)
+        print("Exception when calling PaymentLinksApi->retrieve_payment_link: %s\n" % e)
 ```
 
 
@@ -314,11 +314,11 @@ with lomi.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payout_id** | **str**| Unique identifier for the payout | 
+ **link_id** | **str**| Unique identifier for the payment link | 
 
 ### Return type
 
-[**Payouts**](Payouts.md)
+[**PaymentLinks**](PaymentLinks.md)
 
 ### Authorization
 
@@ -333,19 +333,19 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Payout retrieved successfully |  -  |
+**200** | Payment_link retrieved successfully |  -  |
 **401** | Unauthorized - Invalid or missing API key |  -  |
 **404** | Not found - Resource does not exist |  -  |
 **500** | Internal server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_payout**
-> Payouts update_payout(payout_id, payouts_update)
+# **update_payment_link**
+> PaymentLinks update_payment_link(link_id, payment_links_update)
 
-Update payout
+Update payment link
 
-Update a specific payout. Only provided fields will be updated.
+Update a specific payment link. Only provided fields will be updated.
 
 ### Example
 
@@ -353,8 +353,8 @@ Update a specific payout. Only provided fields will be updated.
 
 ```python
 import lomi
-from lomi.models.payouts import Payouts
-from lomi.models.payouts_update import PayoutsUpdate
+from lomi.models.payment_links import PaymentLinks
+from lomi.models.payment_links_update import PaymentLinksUpdate
 from lomi.rest import ApiException
 from pprint import pprint
 
@@ -378,17 +378,17 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # Enter a context with an instance of the API client
 with lomi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = lomi.PayoutsApi(api_client)
-    payout_id = 'payout_id_example' # str | Unique identifier for the payout
-    payouts_update = {"metadata":{"updated_at":"2025-11-21T13:32:16.240Z","updated_reason":"Administrative update"}} # PayoutsUpdate | 
+    api_instance = lomi.PaymentLinksApi(api_client)
+    link_id = 'link_id_example' # str | Unique identifier for the payment link
+    payment_links_update = {"metadata":{"updated_at":"2025-11-21T13:32:16.240Z","updated_reason":"Administrative update"}} # PaymentLinksUpdate | 
 
     try:
-        # Update payout
-        api_response = api_instance.update_payout(payout_id, payouts_update)
-        print("The response of PayoutsApi->update_payout:\n")
+        # Update payment link
+        api_response = api_instance.update_payment_link(link_id, payment_links_update)
+        print("The response of PaymentLinksApi->update_payment_link:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling PayoutsApi->update_payout: %s\n" % e)
+        print("Exception when calling PaymentLinksApi->update_payment_link: %s\n" % e)
 ```
 
 
@@ -398,12 +398,12 @@ with lomi.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payout_id** | **str**| Unique identifier for the payout | 
- **payouts_update** | [**PayoutsUpdate**](PayoutsUpdate.md)|  | 
+ **link_id** | **str**| Unique identifier for the payment link | 
+ **payment_links_update** | [**PaymentLinksUpdate**](PaymentLinksUpdate.md)|  | 
 
 ### Return type
 
-[**Payouts**](Payouts.md)
+[**PaymentLinks**](PaymentLinks.md)
 
 ### Authorization
 
@@ -418,7 +418,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Payout successfully updated |  -  |
+**200** | Payment_link successfully updated |  -  |
 **400** | Bad request - Invalid input |  -  |
 **401** | Unauthorized - Invalid or missing API key |  -  |
 **404** | Not found - Resource does not exist |  -  |

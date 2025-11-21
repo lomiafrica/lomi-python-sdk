@@ -1,22 +1,22 @@
-# lomi.PayoutsApi
+# lomi.SPIQRCodesApi
 
 All URIs are relative to *https://api.lomi.africa/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_payout**](PayoutsApi.md#create_payout) | **POST** /payouts | Create payout
-[**delete_payout**](PayoutsApi.md#delete_payout) | **DELETE** /payouts/{payout_id} | Delete payout
-[**list_payouts**](PayoutsApi.md#list_payouts) | **GET** /payouts | List payouts
-[**retrieve_payout**](PayoutsApi.md#retrieve_payout) | **GET** /payouts/{payout_id} | Retrieve payout
-[**update_payout**](PayoutsApi.md#update_payout) | **PATCH** /payouts/{payout_id} | Update payout
+[**create_spi_qr_code**](SPIQRCodesApi.md#create_spi_qr_code) | **POST** /spi_qr_codes | Create spi qr code
+[**delete_spi_qr_code**](SPIQRCodesApi.md#delete_spi_qr_code) | **DELETE** /spi_qr_codes/{qr_code_id} | Delete spi qr code
+[**list_spi_qr_codes**](SPIQRCodesApi.md#list_spi_qr_codes) | **GET** /spi_qr_codes | List spi qr codes
+[**retrieve_spi_qr_code**](SPIQRCodesApi.md#retrieve_spi_qr_code) | **GET** /spi_qr_codes/{qr_code_id} | Retrieve spi qr code
+[**update_spi_qr_code**](SPIQRCodesApi.md#update_spi_qr_code) | **PATCH** /spi_qr_codes/{qr_code_id} | Update spi qr code
 
 
-# **create_payout**
-> Payouts create_payout(payouts_create)
+# **create_spi_qr_code**
+> SpiQrCodes create_spi_qr_code(spi_qr_codes_create)
 
-Create payout
+Create spi qr code
 
-Payout management - transfer funds to beneficiaries
+SPI QR codes - generate and manage SPI QR payment codes
 
 ### Example
 
@@ -24,8 +24,8 @@ Payout management - transfer funds to beneficiaries
 
 ```python
 import lomi
-from lomi.models.payouts import Payouts
-from lomi.models.payouts_create import PayoutsCreate
+from lomi.models.spi_qr_codes import SpiQrCodes
+from lomi.models.spi_qr_codes_create import SpiQrCodesCreate
 from lomi.rest import ApiException
 from pprint import pprint
 
@@ -49,16 +49,16 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # Enter a context with an instance of the API client
 with lomi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = lomi.PayoutsApi(api_client)
-    payouts_create = {"amount":100000,"currency_code":"XOF","beneficiary_account_id":"acc_1234567890abcdef","description":"Monthly payout to vendor"} # PayoutsCreate | 
+    api_instance = lomi.SPIQRCodesApi(api_client)
+    spi_qr_codes_create = {"amount":5000,"currency_code":"XOF","description":"QR code for in-store payment","expires_at":"2024-12-31T23:59:59Z"} # SpiQrCodesCreate | 
 
     try:
-        # Create payout
-        api_response = api_instance.create_payout(payouts_create)
-        print("The response of PayoutsApi->create_payout:\n")
+        # Create spi qr code
+        api_response = api_instance.create_spi_qr_code(spi_qr_codes_create)
+        print("The response of SPIQRCodesApi->create_spi_qr_code:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling PayoutsApi->create_payout: %s\n" % e)
+        print("Exception when calling SPIQRCodesApi->create_spi_qr_code: %s\n" % e)
 ```
 
 
@@ -68,11 +68,11 @@ with lomi.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payouts_create** | [**PayoutsCreate**](PayoutsCreate.md)|  | 
+ **spi_qr_codes_create** | [**SpiQrCodesCreate**](SpiQrCodesCreate.md)|  | 
 
 ### Return type
 
-[**Payouts**](Payouts.md)
+[**SpiQrCodes**](SpiQrCodes.md)
 
 ### Authorization
 
@@ -87,19 +87,19 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Payout successfully created |  -  |
+**201** | Spi_qr_code successfully created |  -  |
 **400** | Bad request - Invalid input |  -  |
 **401** | Unauthorized - Invalid or missing API key |  -  |
 **500** | Internal server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_payout**
-> delete_payout(payout_id)
+# **delete_spi_qr_code**
+> delete_spi_qr_code(qr_code_id)
 
-Delete payout
+Delete spi qr code
 
-Delete a specific payout. This action cannot be undone.
+Delete a specific spi qr code. This action cannot be undone.
 
 ### Example
 
@@ -130,14 +130,14 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # Enter a context with an instance of the API client
 with lomi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = lomi.PayoutsApi(api_client)
-    payout_id = 'payout_id_example' # str | Unique identifier for the payout
+    api_instance = lomi.SPIQRCodesApi(api_client)
+    qr_code_id = 'qr_code_id_example' # str | Unique identifier for the spi qr code
 
     try:
-        # Delete payout
-        api_instance.delete_payout(payout_id)
+        # Delete spi qr code
+        api_instance.delete_spi_qr_code(qr_code_id)
     except Exception as e:
-        print("Exception when calling PayoutsApi->delete_payout: %s\n" % e)
+        print("Exception when calling SPIQRCodesApi->delete_spi_qr_code: %s\n" % e)
 ```
 
 
@@ -147,7 +147,7 @@ with lomi.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payout_id** | **str**| Unique identifier for the payout | 
+ **qr_code_id** | **str**| Unique identifier for the spi qr code | 
 
 ### Return type
 
@@ -166,19 +166,19 @@ void (empty response body)
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | Payout successfully deleted |  -  |
+**204** | Spi_qr_code successfully deleted |  -  |
 **401** | Unauthorized - Invalid or missing API key |  -  |
 **404** | Not found - Resource does not exist |  -  |
 **500** | Internal server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_payouts**
-> ListPayouts200Response list_payouts(limit=limit, offset=offset, sort=sort)
+# **list_spi_qr_codes**
+> ListSpiQrCodes200Response list_spi_qr_codes(limit=limit, offset=offset, sort=sort)
 
-List payouts
+List spi qr codes
 
-Payout management - transfer funds to beneficiaries
+SPI QR codes - generate and manage SPI QR payment codes
 
 ### Example
 
@@ -186,7 +186,7 @@ Payout management - transfer funds to beneficiaries
 
 ```python
 import lomi
-from lomi.models.list_payouts200_response import ListPayouts200Response
+from lomi.models.list_spi_qr_codes200_response import ListSpiQrCodes200Response
 from lomi.rest import ApiException
 from pprint import pprint
 
@@ -210,18 +210,18 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # Enter a context with an instance of the API client
 with lomi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = lomi.PayoutsApi(api_client)
+    api_instance = lomi.SPIQRCodesApi(api_client)
     limit = 20 # int | Maximum number of items to return (1-100) (optional) (default to 20)
     offset = 0 # int | Number of items to skip for pagination (optional) (default to 0)
     sort = 'created_at:desc' # str | Sort order. Format: `field:direction` (e.g., `created_at:desc`) (optional)
 
     try:
-        # List payouts
-        api_response = api_instance.list_payouts(limit=limit, offset=offset, sort=sort)
-        print("The response of PayoutsApi->list_payouts:\n")
+        # List spi qr codes
+        api_response = api_instance.list_spi_qr_codes(limit=limit, offset=offset, sort=sort)
+        print("The response of SPIQRCodesApi->list_spi_qr_codes:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling PayoutsApi->list_payouts: %s\n" % e)
+        print("Exception when calling SPIQRCodesApi->list_spi_qr_codes: %s\n" % e)
 ```
 
 
@@ -237,7 +237,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListPayouts200Response**](ListPayouts200Response.md)
+[**ListSpiQrCodes200Response**](ListSpiQrCodes200Response.md)
 
 ### Authorization
 
@@ -258,12 +258,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **retrieve_payout**
-> Payouts retrieve_payout(payout_id)
+# **retrieve_spi_qr_code**
+> SpiQrCodes retrieve_spi_qr_code(qr_code_id)
 
-Retrieve payout
+Retrieve spi qr code
 
-Retrieve a specific payout by its unique identifier.
+Retrieve a specific spi qr code by its unique identifier.
 
 ### Example
 
@@ -271,7 +271,7 @@ Retrieve a specific payout by its unique identifier.
 
 ```python
 import lomi
-from lomi.models.payouts import Payouts
+from lomi.models.spi_qr_codes import SpiQrCodes
 from lomi.rest import ApiException
 from pprint import pprint
 
@@ -295,16 +295,16 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # Enter a context with an instance of the API client
 with lomi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = lomi.PayoutsApi(api_client)
-    payout_id = 'payout_id_example' # str | Unique identifier for the payout
+    api_instance = lomi.SPIQRCodesApi(api_client)
+    qr_code_id = 'qr_code_id_example' # str | Unique identifier for the spi qr code
 
     try:
-        # Retrieve payout
-        api_response = api_instance.retrieve_payout(payout_id)
-        print("The response of PayoutsApi->retrieve_payout:\n")
+        # Retrieve spi qr code
+        api_response = api_instance.retrieve_spi_qr_code(qr_code_id)
+        print("The response of SPIQRCodesApi->retrieve_spi_qr_code:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling PayoutsApi->retrieve_payout: %s\n" % e)
+        print("Exception when calling SPIQRCodesApi->retrieve_spi_qr_code: %s\n" % e)
 ```
 
 
@@ -314,11 +314,11 @@ with lomi.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payout_id** | **str**| Unique identifier for the payout | 
+ **qr_code_id** | **str**| Unique identifier for the spi qr code | 
 
 ### Return type
 
-[**Payouts**](Payouts.md)
+[**SpiQrCodes**](SpiQrCodes.md)
 
 ### Authorization
 
@@ -333,19 +333,19 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Payout retrieved successfully |  -  |
+**200** | Spi_qr_code retrieved successfully |  -  |
 **401** | Unauthorized - Invalid or missing API key |  -  |
 **404** | Not found - Resource does not exist |  -  |
 **500** | Internal server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_payout**
-> Payouts update_payout(payout_id, payouts_update)
+# **update_spi_qr_code**
+> SpiQrCodes update_spi_qr_code(qr_code_id, spi_qr_codes_update)
 
-Update payout
+Update spi qr code
 
-Update a specific payout. Only provided fields will be updated.
+Update a specific spi qr code. Only provided fields will be updated.
 
 ### Example
 
@@ -353,8 +353,8 @@ Update a specific payout. Only provided fields will be updated.
 
 ```python
 import lomi
-from lomi.models.payouts import Payouts
-from lomi.models.payouts_update import PayoutsUpdate
+from lomi.models.spi_qr_codes import SpiQrCodes
+from lomi.models.spi_qr_codes_update import SpiQrCodesUpdate
 from lomi.rest import ApiException
 from pprint import pprint
 
@@ -378,17 +378,17 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # Enter a context with an instance of the API client
 with lomi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = lomi.PayoutsApi(api_client)
-    payout_id = 'payout_id_example' # str | Unique identifier for the payout
-    payouts_update = {"metadata":{"updated_at":"2025-11-21T13:32:16.240Z","updated_reason":"Administrative update"}} # PayoutsUpdate | 
+    api_instance = lomi.SPIQRCodesApi(api_client)
+    qr_code_id = 'qr_code_id_example' # str | Unique identifier for the spi qr code
+    spi_qr_codes_update = {"metadata":{"updated_at":"2025-11-21T13:32:16.241Z","updated_reason":"Administrative update"}} # SpiQrCodesUpdate | 
 
     try:
-        # Update payout
-        api_response = api_instance.update_payout(payout_id, payouts_update)
-        print("The response of PayoutsApi->update_payout:\n")
+        # Update spi qr code
+        api_response = api_instance.update_spi_qr_code(qr_code_id, spi_qr_codes_update)
+        print("The response of SPIQRCodesApi->update_spi_qr_code:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling PayoutsApi->update_payout: %s\n" % e)
+        print("Exception when calling SPIQRCodesApi->update_spi_qr_code: %s\n" % e)
 ```
 
 
@@ -398,12 +398,12 @@ with lomi.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payout_id** | **str**| Unique identifier for the payout | 
- **payouts_update** | [**PayoutsUpdate**](PayoutsUpdate.md)|  | 
+ **qr_code_id** | **str**| Unique identifier for the spi qr code | 
+ **spi_qr_codes_update** | [**SpiQrCodesUpdate**](SpiQrCodesUpdate.md)|  | 
 
 ### Return type
 
-[**Payouts**](Payouts.md)
+[**SpiQrCodes**](SpiQrCodes.md)
 
 ### Authorization
 
@@ -418,7 +418,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Payout successfully updated |  -  |
+**200** | Spi_qr_code successfully updated |  -  |
 **400** | Bad request - Invalid input |  -  |
 **401** | Unauthorized - Invalid or missing API key |  -  |
 **404** | Not found - Resource does not exist |  -  |

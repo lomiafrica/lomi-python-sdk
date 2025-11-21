@@ -1,22 +1,22 @@
-# lomi.PayoutsApi
+# lomi.DiscountCouponsApi
 
 All URIs are relative to *https://api.lomi.africa/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_payout**](PayoutsApi.md#create_payout) | **POST** /payouts | Create payout
-[**delete_payout**](PayoutsApi.md#delete_payout) | **DELETE** /payouts/{payout_id} | Delete payout
-[**list_payouts**](PayoutsApi.md#list_payouts) | **GET** /payouts | List payouts
-[**retrieve_payout**](PayoutsApi.md#retrieve_payout) | **GET** /payouts/{payout_id} | Retrieve payout
-[**update_payout**](PayoutsApi.md#update_payout) | **PATCH** /payouts/{payout_id} | Update payout
+[**create_discount_coupon**](DiscountCouponsApi.md#create_discount_coupon) | **POST** /discount_coupons | Create discount coupon
+[**delete_discount_coupon**](DiscountCouponsApi.md#delete_discount_coupon) | **DELETE** /discount_coupons/{coupon_id} | Delete discount coupon
+[**list_discount_coupons**](DiscountCouponsApi.md#list_discount_coupons) | **GET** /discount_coupons | List discount coupons
+[**retrieve_discount_coupon**](DiscountCouponsApi.md#retrieve_discount_coupon) | **GET** /discount_coupons/{coupon_id} | Retrieve discount coupon
+[**update_discount_coupon**](DiscountCouponsApi.md#update_discount_coupon) | **PATCH** /discount_coupons/{coupon_id} | Update discount coupon
 
 
-# **create_payout**
-> Payouts create_payout(payouts_create)
+# **create_discount_coupon**
+> DiscountCoupons create_discount_coupon(discount_coupons_create)
 
-Create payout
+Create discount coupon
 
-Payout management - transfer funds to beneficiaries
+Discount coupons - create and manage promotional codes
 
 ### Example
 
@@ -24,8 +24,8 @@ Payout management - transfer funds to beneficiaries
 
 ```python
 import lomi
-from lomi.models.payouts import Payouts
-from lomi.models.payouts_create import PayoutsCreate
+from lomi.models.discount_coupons import DiscountCoupons
+from lomi.models.discount_coupons_create import DiscountCouponsCreate
 from lomi.rest import ApiException
 from pprint import pprint
 
@@ -49,16 +49,16 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # Enter a context with an instance of the API client
 with lomi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = lomi.PayoutsApi(api_client)
-    payouts_create = {"amount":100000,"currency_code":"XOF","beneficiary_account_id":"acc_1234567890abcdef","description":"Monthly payout to vendor"} # PayoutsCreate | 
+    api_instance = lomi.DiscountCouponsApi(api_client)
+    discount_coupons_create = {"code":"WELCOME2024","discount_type":"percentage","discount_percentage":20,"max_uses":100,"is_active":true,"expires_at":"2024-12-31T23:59:59Z","description":"Welcome discount for new customers"} # DiscountCouponsCreate | 
 
     try:
-        # Create payout
-        api_response = api_instance.create_payout(payouts_create)
-        print("The response of PayoutsApi->create_payout:\n")
+        # Create discount coupon
+        api_response = api_instance.create_discount_coupon(discount_coupons_create)
+        print("The response of DiscountCouponsApi->create_discount_coupon:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling PayoutsApi->create_payout: %s\n" % e)
+        print("Exception when calling DiscountCouponsApi->create_discount_coupon: %s\n" % e)
 ```
 
 
@@ -68,11 +68,11 @@ with lomi.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payouts_create** | [**PayoutsCreate**](PayoutsCreate.md)|  | 
+ **discount_coupons_create** | [**DiscountCouponsCreate**](DiscountCouponsCreate.md)|  | 
 
 ### Return type
 
-[**Payouts**](Payouts.md)
+[**DiscountCoupons**](DiscountCoupons.md)
 
 ### Authorization
 
@@ -87,19 +87,19 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Payout successfully created |  -  |
+**201** | Discount_coupon successfully created |  -  |
 **400** | Bad request - Invalid input |  -  |
 **401** | Unauthorized - Invalid or missing API key |  -  |
 **500** | Internal server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_payout**
-> delete_payout(payout_id)
+# **delete_discount_coupon**
+> delete_discount_coupon(coupon_id)
 
-Delete payout
+Delete discount coupon
 
-Delete a specific payout. This action cannot be undone.
+Delete a specific discount coupon. This action cannot be undone.
 
 ### Example
 
@@ -130,14 +130,14 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # Enter a context with an instance of the API client
 with lomi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = lomi.PayoutsApi(api_client)
-    payout_id = 'payout_id_example' # str | Unique identifier for the payout
+    api_instance = lomi.DiscountCouponsApi(api_client)
+    coupon_id = 'coupon_id_example' # str | Unique identifier for the discount coupon
 
     try:
-        # Delete payout
-        api_instance.delete_payout(payout_id)
+        # Delete discount coupon
+        api_instance.delete_discount_coupon(coupon_id)
     except Exception as e:
-        print("Exception when calling PayoutsApi->delete_payout: %s\n" % e)
+        print("Exception when calling DiscountCouponsApi->delete_discount_coupon: %s\n" % e)
 ```
 
 
@@ -147,7 +147,7 @@ with lomi.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payout_id** | **str**| Unique identifier for the payout | 
+ **coupon_id** | **str**| Unique identifier for the discount coupon | 
 
 ### Return type
 
@@ -166,19 +166,19 @@ void (empty response body)
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | Payout successfully deleted |  -  |
+**204** | Discount_coupon successfully deleted |  -  |
 **401** | Unauthorized - Invalid or missing API key |  -  |
 **404** | Not found - Resource does not exist |  -  |
 **500** | Internal server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_payouts**
-> ListPayouts200Response list_payouts(limit=limit, offset=offset, sort=sort)
+# **list_discount_coupons**
+> ListDiscountCoupons200Response list_discount_coupons(limit=limit, offset=offset, sort=sort)
 
-List payouts
+List discount coupons
 
-Payout management - transfer funds to beneficiaries
+Discount coupons - create and manage promotional codes
 
 ### Example
 
@@ -186,7 +186,7 @@ Payout management - transfer funds to beneficiaries
 
 ```python
 import lomi
-from lomi.models.list_payouts200_response import ListPayouts200Response
+from lomi.models.list_discount_coupons200_response import ListDiscountCoupons200Response
 from lomi.rest import ApiException
 from pprint import pprint
 
@@ -210,18 +210,18 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # Enter a context with an instance of the API client
 with lomi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = lomi.PayoutsApi(api_client)
+    api_instance = lomi.DiscountCouponsApi(api_client)
     limit = 20 # int | Maximum number of items to return (1-100) (optional) (default to 20)
     offset = 0 # int | Number of items to skip for pagination (optional) (default to 0)
     sort = 'created_at:desc' # str | Sort order. Format: `field:direction` (e.g., `created_at:desc`) (optional)
 
     try:
-        # List payouts
-        api_response = api_instance.list_payouts(limit=limit, offset=offset, sort=sort)
-        print("The response of PayoutsApi->list_payouts:\n")
+        # List discount coupons
+        api_response = api_instance.list_discount_coupons(limit=limit, offset=offset, sort=sort)
+        print("The response of DiscountCouponsApi->list_discount_coupons:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling PayoutsApi->list_payouts: %s\n" % e)
+        print("Exception when calling DiscountCouponsApi->list_discount_coupons: %s\n" % e)
 ```
 
 
@@ -237,7 +237,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListPayouts200Response**](ListPayouts200Response.md)
+[**ListDiscountCoupons200Response**](ListDiscountCoupons200Response.md)
 
 ### Authorization
 
@@ -258,12 +258,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **retrieve_payout**
-> Payouts retrieve_payout(payout_id)
+# **retrieve_discount_coupon**
+> DiscountCoupons retrieve_discount_coupon(coupon_id)
 
-Retrieve payout
+Retrieve discount coupon
 
-Retrieve a specific payout by its unique identifier.
+Retrieve a specific discount coupon by its unique identifier.
 
 ### Example
 
@@ -271,7 +271,7 @@ Retrieve a specific payout by its unique identifier.
 
 ```python
 import lomi
-from lomi.models.payouts import Payouts
+from lomi.models.discount_coupons import DiscountCoupons
 from lomi.rest import ApiException
 from pprint import pprint
 
@@ -295,16 +295,16 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # Enter a context with an instance of the API client
 with lomi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = lomi.PayoutsApi(api_client)
-    payout_id = 'payout_id_example' # str | Unique identifier for the payout
+    api_instance = lomi.DiscountCouponsApi(api_client)
+    coupon_id = 'coupon_id_example' # str | Unique identifier for the discount coupon
 
     try:
-        # Retrieve payout
-        api_response = api_instance.retrieve_payout(payout_id)
-        print("The response of PayoutsApi->retrieve_payout:\n")
+        # Retrieve discount coupon
+        api_response = api_instance.retrieve_discount_coupon(coupon_id)
+        print("The response of DiscountCouponsApi->retrieve_discount_coupon:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling PayoutsApi->retrieve_payout: %s\n" % e)
+        print("Exception when calling DiscountCouponsApi->retrieve_discount_coupon: %s\n" % e)
 ```
 
 
@@ -314,11 +314,11 @@ with lomi.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payout_id** | **str**| Unique identifier for the payout | 
+ **coupon_id** | **str**| Unique identifier for the discount coupon | 
 
 ### Return type
 
-[**Payouts**](Payouts.md)
+[**DiscountCoupons**](DiscountCoupons.md)
 
 ### Authorization
 
@@ -333,19 +333,19 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Payout retrieved successfully |  -  |
+**200** | Discount_coupon retrieved successfully |  -  |
 **401** | Unauthorized - Invalid or missing API key |  -  |
 **404** | Not found - Resource does not exist |  -  |
 **500** | Internal server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_payout**
-> Payouts update_payout(payout_id, payouts_update)
+# **update_discount_coupon**
+> DiscountCoupons update_discount_coupon(coupon_id, discount_coupons_update)
 
-Update payout
+Update discount coupon
 
-Update a specific payout. Only provided fields will be updated.
+Update a specific discount coupon. Only provided fields will be updated.
 
 ### Example
 
@@ -353,8 +353,8 @@ Update a specific payout. Only provided fields will be updated.
 
 ```python
 import lomi
-from lomi.models.payouts import Payouts
-from lomi.models.payouts_update import PayoutsUpdate
+from lomi.models.discount_coupons import DiscountCoupons
+from lomi.models.discount_coupons_update import DiscountCouponsUpdate
 from lomi.rest import ApiException
 from pprint import pprint
 
@@ -378,17 +378,17 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # Enter a context with an instance of the API client
 with lomi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = lomi.PayoutsApi(api_client)
-    payout_id = 'payout_id_example' # str | Unique identifier for the payout
-    payouts_update = {"metadata":{"updated_at":"2025-11-21T13:32:16.240Z","updated_reason":"Administrative update"}} # PayoutsUpdate | 
+    api_instance = lomi.DiscountCouponsApi(api_client)
+    coupon_id = 'coupon_id_example' # str | Unique identifier for the discount coupon
+    discount_coupons_update = {"is_active":false,"max_uses":50} # DiscountCouponsUpdate | 
 
     try:
-        # Update payout
-        api_response = api_instance.update_payout(payout_id, payouts_update)
-        print("The response of PayoutsApi->update_payout:\n")
+        # Update discount coupon
+        api_response = api_instance.update_discount_coupon(coupon_id, discount_coupons_update)
+        print("The response of DiscountCouponsApi->update_discount_coupon:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling PayoutsApi->update_payout: %s\n" % e)
+        print("Exception when calling DiscountCouponsApi->update_discount_coupon: %s\n" % e)
 ```
 
 
@@ -398,12 +398,12 @@ with lomi.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payout_id** | **str**| Unique identifier for the payout | 
- **payouts_update** | [**PayoutsUpdate**](PayoutsUpdate.md)|  | 
+ **coupon_id** | **str**| Unique identifier for the discount coupon | 
+ **discount_coupons_update** | [**DiscountCouponsUpdate**](DiscountCouponsUpdate.md)|  | 
 
 ### Return type
 
-[**Payouts**](Payouts.md)
+[**DiscountCoupons**](DiscountCoupons.md)
 
 ### Authorization
 
@@ -418,7 +418,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Payout successfully updated |  -  |
+**200** | Discount_coupon successfully updated |  -  |
 **400** | Bad request - Invalid input |  -  |
 **401** | Unauthorized - Invalid or missing API key |  -  |
 **404** | Not found - Resource does not exist |  -  |
