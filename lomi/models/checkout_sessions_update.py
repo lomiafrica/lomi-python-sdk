@@ -49,7 +49,7 @@ class CheckoutSessionsUpdate(BaseModel):
     payment_request_id: Optional[UUID] = Field(default=None, description="Unique identifier (UUID format)")
     price_id: Optional[UUID] = Field(default=None, description="Unique identifier (UUID format)")
     product_id: Optional[UUID] = Field(default=None, description="Unique identifier (UUID format)")
-    public_description: Optional[StrictStr] = None
+    description: Optional[StrictStr] = None
     qr_code_data: Optional[Dict[str, Any]] = None
     qr_code_type: Optional[StrictStr] = None
     quantity: Optional[Union[StrictFloat, StrictInt]] = None
@@ -59,7 +59,7 @@ class CheckoutSessionsUpdate(BaseModel):
     subscription_id: Optional[UUID] = Field(default=None, description="Unique identifier (UUID format)")
     success_url: Optional[StrictStr] = Field(default=None, description="URL/URI")
     title: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["allow_coupon_code", "allow_quantity", "allowed_providers", "amount", "cancel_url", "checkout_session_id", "currency_code", "customer_email", "customer_id", "customer_name", "customer_phone", "expires_at", "installment_plan_id", "is_pos", "is_spi", "metadata", "payment_link_id", "payment_request_id", "price_id", "product_id", "public_description", "qr_code_data", "qr_code_type", "quantity", "spi_account_number", "spi_qr_code_id", "status", "subscription_id", "success_url", "title"]
+    __properties: ClassVar[List[str]] = ["allow_coupon_code", "allow_quantity", "allowed_providers", "amount", "cancel_url", "checkout_session_id", "currency_code", "customer_email", "customer_id", "customer_name", "customer_phone", "expires_at", "installment_plan_id", "is_pos", "is_spi", "metadata", "payment_link_id", "payment_request_id", "price_id", "product_id", "description", "qr_code_data", "qr_code_type", "quantity", "spi_account_number", "spi_qr_code_id", "status", "subscription_id", "success_url", "title"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -132,7 +132,7 @@ class CheckoutSessionsUpdate(BaseModel):
             "payment_request_id": obj.get("payment_request_id"),
             "price_id": obj.get("price_id"),
             "product_id": obj.get("product_id"),
-            "public_description": obj.get("public_description"),
+            "description": obj.get("description"),
             "qr_code_data": obj.get("qr_code_data"),
             "qr_code_type": obj.get("qr_code_type"),
             "quantity": obj.get("quantity"),

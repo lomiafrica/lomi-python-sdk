@@ -60,7 +60,7 @@ class TestCheckoutSessionsCreate(unittest.TestCase):
                 payment_request_id = '',
                 price_id = '',
                 product_id = '',
-                public_description = '',
+                description = '',
                 qr_code_data = None,
                 qr_code_type = '',
                 quantity = 1.337,

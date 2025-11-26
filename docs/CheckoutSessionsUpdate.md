@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 **payment_request_id** | **str** | Unique identifier (UUID format) | [optional] 
 **price_id** | **str** | Unique identifier (UUID format) | [optional] 
 **product_id** | **str** | Unique identifier (UUID format) | [optional] 
-**public_description** | **str** |  | [optional] 
+**description** | **str** |  | [optional] 
 **qr_code_data** | **object** |  | [optional] 
 **qr_code_type** | **str** |  | [optional] 
 **quantity** | **float** |  | [optional] 

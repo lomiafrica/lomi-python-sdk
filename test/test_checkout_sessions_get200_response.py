@@ -62,7 +62,7 @@ class TestCheckoutSessionsGet200Response(unittest.TestCase):
                         payment_request_id = '', 
                         price_id = '', 
                         product_id = '', 
-                        public_description = '', 
+                        description = '', 
                         qr_code_data = lomi_sdk.models.qr_code_data.qr_code_data(), 
                         qr_code_type = '', 
                         quantity = 1.337, 

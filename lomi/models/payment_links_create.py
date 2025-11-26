@@ -43,12 +43,12 @@ class PaymentLinksCreate(BaseModel):
     price_id: Optional[UUID] = Field(default=None, description="Unique identifier (UUID format)")
     private_description: Optional[StrictStr] = None
     product_id: Optional[UUID] = Field(default=None, description="Unique identifier (UUID format)")
-    public_description: Optional[StrictStr] = None
+    description: Optional[StrictStr] = None
     quantity: Optional[Union[StrictFloat, StrictInt]] = None
     success_url: Optional[StrictStr] = Field(default=None, description="URL/URI")
     title: Optional[StrictStr] = None
     url: Optional[StrictStr] = Field(default=None, description="URL/URI")
-    __properties: ClassVar[List[str]] = ["allow_coupon_code", "allow_quantity", "allowed_providers", "amount", "cancel_url", "currency_code", "expires_at", "is_active", "link_id", "link_type", "metadata", "price_id", "private_description", "product_id", "public_description", "quantity", "success_url", "title", "url"]
+    __properties: ClassVar[List[str]] = ["allow_coupon_code", "allow_quantity", "allowed_providers", "amount", "cancel_url", "currency_code", "expires_at", "is_active", "link_id", "link_type", "metadata", "price_id", "private_description", "product_id", "description", "quantity", "success_url", "title", "url"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -115,7 +115,7 @@ class PaymentLinksCreate(BaseModel):
             "price_id": obj.get("price_id"),
             "private_description": obj.get("private_description"),
             "product_id": obj.get("product_id"),
-            "public_description": obj.get("public_description"),
+            "description": obj.get("description"),
             "quantity": obj.get("quantity"),
             "success_url": obj.get("success_url"),
             "title": obj.get("title"),

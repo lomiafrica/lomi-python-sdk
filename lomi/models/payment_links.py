@@ -47,13 +47,13 @@ class PaymentLinks(BaseModel):
     price_id: Optional[UUID] = Field(default=None, description="Unique identifier (UUID format)")
     private_description: Optional[StrictStr] = None
     product_id: Optional[UUID] = Field(default=None, description="Unique identifier (UUID format)")
-    public_description: Optional[StrictStr] = None
+    description: Optional[StrictStr] = None
     quantity: Optional[Union[StrictFloat, StrictInt]] = None
     success_url: Optional[StrictStr] = Field(default=None, description="URL/URI")
     title: Optional[StrictStr] = None
     updated_at: Optional[datetime] = Field(default=None, description="ISO 8601 datetime")
     url: Optional[StrictStr] = Field(default=None, description="URL/URI")
-    __properties: ClassVar[List[str]] = ["allow_coupon_code", "allow_quantity", "allowed_providers", "amount", "cancel_url", "created_at", "created_by", "currency_code", "environment", "expires_at", "is_active", "link_id", "link_type", "metadata", "organization_id", "price_id", "private_description", "product_id", "public_description", "quantity", "success_url", "title", "updated_at", "url"]
+    __properties: ClassVar[List[str]] = ["allow_coupon_code", "allow_quantity", "allowed_providers", "amount", "cancel_url", "created_at", "created_by", "currency_code", "environment", "expires_at", "is_active", "link_id", "link_type", "metadata", "organization_id", "price_id", "private_description", "product_id", "description", "quantity", "success_url", "title", "updated_at", "url"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -130,7 +130,7 @@ class PaymentLinks(BaseModel):
             "price_id": obj.get("price_id"),
             "private_description": obj.get("private_description"),
             "product_id": obj.get("product_id"),
-            "public_description": obj.get("public_description"),
+            "description": obj.get("description"),
             "quantity": obj.get("quantity"),
             "success_url": obj.get("success_url"),
             "title": obj.get("title"),

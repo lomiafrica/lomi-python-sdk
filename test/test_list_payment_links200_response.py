@@ -56,7 +56,7 @@ class TestListPaymentLinks200Response(unittest.TestCase):
                         price_id = '', 
                         private_description = '', 
                         product_id = '', 
-                        public_description = '', 
+                        description = '', 
                         quantity = 1.337, 
                         success_url = '', 
                         title = '', 
