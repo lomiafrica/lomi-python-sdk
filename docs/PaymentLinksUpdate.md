@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **allow_coupon_code** | **bool** |  | [optional] 
 **allow_quantity** | **bool** |  | [optional] 
-**allowed_providers** | **str** |  | [optional] 
 **amount** | **float** | Amount in the smallest currency unit (e.g., cents for USD, same for XOF) | [optional] 
 **cancel_url** | **str** | URL/URI | [optional] 
 **currency_code** | **str** | Three-letter ISO currency code (e.g., XOF, USD, EUR) | [optional] 
