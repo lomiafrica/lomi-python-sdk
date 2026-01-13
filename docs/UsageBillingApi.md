@@ -1,6 +1,6 @@
 # lomi.UsageBillingApi
 
-All URIs are relative to *https://api.lomi.africa/v1*
+All URIs are relative to *https://api.lomi.africa*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -31,10 +31,10 @@ from lomi.models.meters_create import MetersCreate
 from lomi.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.lomi.africa/v1
+# Defining the host is optional and defaults to https://api.lomi.africa
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lomi.Configuration(
-    host = "https://api.lomi.africa/v1"
+    host = "https://api.lomi.africa"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -112,10 +112,10 @@ import lomi
 from lomi.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.lomi.africa/v1
+# Defining the host is optional and defaults to https://api.lomi.africa
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lomi.Configuration(
-    host = "https://api.lomi.africa/v1"
+    host = "https://api.lomi.africa"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -192,10 +192,10 @@ from lomi.models.list_meter_balances200_response import ListMeterBalances200Resp
 from lomi.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.lomi.africa/v1
+# Defining the host is optional and defaults to https://api.lomi.africa
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lomi.Configuration(
-    host = "https://api.lomi.africa/v1"
+    host = "https://api.lomi.africa"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -277,10 +277,10 @@ from lomi.models.list_meters200_response import ListMeters200Response
 from lomi.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.lomi.africa/v1
+# Defining the host is optional and defaults to https://api.lomi.africa
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lomi.Configuration(
-    host = "https://api.lomi.africa/v1"
+    host = "https://api.lomi.africa"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -362,10 +362,10 @@ from lomi.models.meters import Meters
 from lomi.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.lomi.africa/v1
+# Defining the host is optional and defaults to https://api.lomi.africa
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lomi.Configuration(
-    host = "https://api.lomi.africa/v1"
+    host = "https://api.lomi.africa"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -444,10 +444,10 @@ from lomi.models.meter_balances import MeterBalances
 from lomi.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.lomi.africa/v1
+# Defining the host is optional and defaults to https://api.lomi.africa
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lomi.Configuration(
-    host = "https://api.lomi.africa/v1"
+    host = "https://api.lomi.africa"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -527,10 +527,10 @@ from lomi.models.meters_update import MetersUpdate
 from lomi.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.lomi.africa/v1
+# Defining the host is optional and defaults to https://api.lomi.africa
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lomi.Configuration(
-    host = "https://api.lomi.africa/v1"
+    host = "https://api.lomi.africa"
 )
 
 # The client must configure the authentication and authorization parameters

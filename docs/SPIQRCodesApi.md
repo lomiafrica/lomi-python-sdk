@@ -1,6 +1,6 @@
 # lomi.SPIQRCodesApi
 
-All URIs are relative to *https://api.lomi.africa/v1*
+All URIs are relative to *https://api.lomi.africa*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -29,10 +29,10 @@ from lomi.models.spi_qr_codes_create import SpiQrCodesCreate
 from lomi.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.lomi.africa/v1
+# Defining the host is optional and defaults to https://api.lomi.africa
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lomi.Configuration(
-    host = "https://api.lomi.africa/v1"
+    host = "https://api.lomi.africa"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -110,10 +110,10 @@ import lomi
 from lomi.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.lomi.africa/v1
+# Defining the host is optional and defaults to https://api.lomi.africa
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lomi.Configuration(
-    host = "https://api.lomi.africa/v1"
+    host = "https://api.lomi.africa"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -190,10 +190,10 @@ from lomi.models.list_spi_qr_codes200_response import ListSpiQrCodes200Response
 from lomi.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.lomi.africa/v1
+# Defining the host is optional and defaults to https://api.lomi.africa
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lomi.Configuration(
-    host = "https://api.lomi.africa/v1"
+    host = "https://api.lomi.africa"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -275,10 +275,10 @@ from lomi.models.spi_qr_codes import SpiQrCodes
 from lomi.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.lomi.africa/v1
+# Defining the host is optional and defaults to https://api.lomi.africa
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lomi.Configuration(
-    host = "https://api.lomi.africa/v1"
+    host = "https://api.lomi.africa"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -358,10 +358,10 @@ from lomi.models.spi_qr_codes_update import SpiQrCodesUpdate
 from lomi.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.lomi.africa/v1
+# Defining the host is optional and defaults to https://api.lomi.africa
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lomi.Configuration(
-    host = "https://api.lomi.africa/v1"
+    host = "https://api.lomi.africa"
 )
 
 # The client must configure the authentication and authorization parameters

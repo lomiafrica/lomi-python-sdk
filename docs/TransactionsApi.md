@@ -1,6 +1,6 @@
 # lomi.TransactionsApi
 
-All URIs are relative to *https://api.lomi.africa/v1*
+All URIs are relative to *https://api.lomi.africa*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -25,10 +25,10 @@ from lomi.models.list_transactions200_response import ListTransactions200Respons
 from lomi.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.lomi.africa/v1
+# Defining the host is optional and defaults to https://api.lomi.africa
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lomi.Configuration(
-    host = "https://api.lomi.africa/v1"
+    host = "https://api.lomi.africa"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -110,10 +110,10 @@ from lomi.models.transactions import Transactions
 from lomi.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.lomi.africa/v1
+# Defining the host is optional and defaults to https://api.lomi.africa
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lomi.Configuration(
-    host = "https://api.lomi.africa/v1"
+    host = "https://api.lomi.africa"
 )
 
 # The client must configure the authentication and authorization parameters

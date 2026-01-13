@@ -14,11 +14,11 @@ class LomiClient:
     def __init__(
         self,
         api_key: str,
-        base_url: str = "https://api.lomi.africa/v1",
+        base_url: str = "https://api.lomi.africa",
         environment: str = "live"
     ):
         self.api_key = api_key
-        self.base_url = base_url if environment != "test" else "https://sandbox.api.lomi.africa/v1"
+        self.base_url = base_url if environment != "test" else "https://sandbox.api.lomi.africa"
         self.session = requests.Session()
         self.session.headers.update({
             "X-API-KEY": api_key,
@@ -41,6 +41,7 @@ class LomiClient:
         self.beneficiary_payouts = BeneficiaryPayoutsService(self)
         self.webhooks = WebhooksService(self)
         self.webhook_delivery_logs = WebhookDeliveryLogsService(self)
+        self.providers = ProvidersService(self)
     
     def _request(
         self,
@@ -118,6 +119,18 @@ class CustomersService:
         """Get a single customer"""
         return self._client._request("GET", f"/customers/{id}")
 
+    def create(self, data: dict) -> dict:
+        """Create a customer"""
+        return self._client._request("POST", "/customers", data=data)
+
+    def update(self, id: str, data: dict) -> dict:
+        """Update a customer"""
+        return self._client._request("PATCH", f"/customers/{id}", data=data)
+
+    def delete(self, id: str) -> dict:
+        """Delete a customer"""
+        return self._client._request("DELETE", f"/customers/{id}")
+
 
 class PaymentRequestsService:
     """payment_requests API service"""
@@ -178,6 +191,18 @@ class ProductsService:
         """Get a single product"""
         return self._client._request("GET", f"/products/{id}")
 
+    def create(self, data: dict) -> dict:
+        """Create a product"""
+        return self._client._request("POST", "/products", data=data)
+
+    def update(self, id: str, data: dict) -> dict:
+        """Update a product"""
+        return self._client._request("PATCH", f"/products/{id}", data=data)
+
+    def delete(self, id: str) -> dict:
+        """Delete a product"""
+        return self._client._request("DELETE", f"/products/{id}")
+
 
 class SubscriptionsService:
     """subscriptions API service"""
@@ -192,6 +217,18 @@ class SubscriptionsService:
     def get(self, id: str) -> dict:
         """Get a single subscription"""
         return self._client._request("GET", f"/subscriptions/{id}")
+
+    def create(self, data: dict) -> dict:
+        """Create a subscription"""
+        return self._client._request("POST", "/subscriptions", data=data)
+
+    def update(self, id: str, data: dict) -> dict:
+        """Update a subscription"""
+        return self._client._request("PATCH", f"/subscriptions/{id}", data=data)
+
+    def delete(self, id: str) -> dict:
+        """Delete a subscription"""
+        return self._client._request("DELETE", f"/subscriptions/{id}")
 
 
 class DiscountCouponsService:
@@ -223,6 +260,18 @@ class CheckoutSessionsService:
         """Get a single checkout_session"""
         return self._client._request("GET", f"/checkout-sessions/{id}")
 
+    def create(self, data: dict) -> dict:
+        """Create a checkout_session"""
+        return self._client._request("POST", "/checkout-sessions", data=data)
+
+    def update(self, id: str, data: dict) -> dict:
+        """Update a checkout_session"""
+        return self._client._request("PATCH", f"/checkout-sessions/{id}", data=data)
+
+    def delete(self, id: str) -> dict:
+        """Delete a checkout_session"""
+        return self._client._request("DELETE", f"/checkout-sessions/{id}")
+
 
 class PaymentLinksService:
     """payment_links API service"""
@@ -237,6 +286,18 @@ class PaymentLinksService:
     def get(self, id: str) -> dict:
         """Get a single payment_link"""
         return self._client._request("GET", f"/payment-links/{id}")
+
+    def create(self, data: dict) -> dict:
+        """Create a payment_link"""
+        return self._client._request("POST", "/payment-links", data=data)
+
+    def update(self, id: str, data: dict) -> dict:
+        """Update a payment_link"""
+        return self._client._request("PATCH", f"/payment-links/{id}", data=data)
+
+    def delete(self, id: str) -> dict:
+        """Delete a payment_link"""
+        return self._client._request("DELETE", f"/payment-links/{id}")
 
 
 class PayoutsService:
@@ -282,6 +343,34 @@ class WebhooksService:
     def get(self, id: str) -> dict:
         """Get a single webhook"""
         return self._client._request("GET", f"/webhooks/{id}")
+
+    def create(self, data: dict) -> dict:
+        """Create a webhook"""
+        return self._client._request("POST", "/webhooks", data=data)
+
+    def update(self, id: str, data: dict) -> dict:
+        """Update a webhook"""
+        return self._client._request("PATCH", f"/webhooks/{id}", data=data)
+
+    def delete(self, id: str) -> dict:
+        """Delete a webhook"""
+        return self._client._request("DELETE", f"/webhooks/{id}")
+
+
+class ProvidersService:
+    """providers API service"""
+
+    def __init__(self, client: LomiClient):
+        self._client = client
+
+    def list(self, **params) -> list:
+        """List providers"""
+        return self._client._request("GET", "/providers", params=params)
+
+    def get(self, id: str) -> dict:
+        """Get a single provider"""
+        return self._client._request("GET", f"/providers/{id}")
+
 
 
 class WebhookDeliveryLogsService:

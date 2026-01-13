@@ -1,6 +1,6 @@
 # lomi.CheckoutSessionsApi
 
-All URIs are relative to *https://api.lomi.africa/v1*
+All URIs are relative to *https://api.lomi.africa*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -29,10 +29,10 @@ from lomi.models.checkout_sessions_create import CheckoutSessionsCreate
 from lomi.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.lomi.africa/v1
+# Defining the host is optional and defaults to https://api.lomi.africa
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lomi.Configuration(
-    host = "https://api.lomi.africa/v1"
+    host = "https://api.lomi.africa"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -110,10 +110,10 @@ import lomi
 from lomi.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.lomi.africa/v1
+# Defining the host is optional and defaults to https://api.lomi.africa
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lomi.Configuration(
-    host = "https://api.lomi.africa/v1"
+    host = "https://api.lomi.africa"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -190,10 +190,10 @@ from lomi.models.list_checkout_sessions200_response import ListCheckoutSessions2
 from lomi.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.lomi.africa/v1
+# Defining the host is optional and defaults to https://api.lomi.africa
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lomi.Configuration(
-    host = "https://api.lomi.africa/v1"
+    host = "https://api.lomi.africa"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -275,10 +275,10 @@ from lomi.models.checkout_sessions import CheckoutSessions
 from lomi.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.lomi.africa/v1
+# Defining the host is optional and defaults to https://api.lomi.africa
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lomi.Configuration(
-    host = "https://api.lomi.africa/v1"
+    host = "https://api.lomi.africa"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -358,10 +358,10 @@ from lomi.models.checkout_sessions_update import CheckoutSessionsUpdate
 from lomi.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.lomi.africa/v1
+# Defining the host is optional and defaults to https://api.lomi.africa
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lomi.Configuration(
-    host = "https://api.lomi.africa/v1"
+    host = "https://api.lomi.africa"
 )
 
 # The client must configure the authentication and authorization parameters
