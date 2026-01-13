@@ -1,16 +1,10 @@
 # WebhookEvent
 
-Enum: webhook_event
-
-## Enum
-
-* `PAYMENT_CREATED` (value: `'PAYMENT_CREATED'`)
+Enum:* `PAYMENT_CREATED` (value: `'PAYMENT_CREATED'`)
 
 * `PAYMENT_SUCCEEDED` (value: `'PAYMENT_SUCCEEDED'`)
 
 * `PAYMENT_FAILED` (value: `'PAYMENT_FAILED'`)
-
-* `PAYMENT_CANCELED` (value: `'PAYMENT_CANCELED'`)
 
 * `REFUND_CREATED` (value: `'REFUND_CREATED'`)
 
@@ -24,10 +18,4 @@ Enum: webhook_event
 
 * `SUBSCRIPTION_CANCELED` (value: `'SUBSCRIPTION_CANCELED'`)
 
-* `CHECKOUT_COMPLETED` (value: `'CHECKOUT_COMPLETED'`)
-
-* `PROVIDER_STATUS_CHANGED` (value: `'PROVIDER_STATUS_CHANGED'`)
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-
