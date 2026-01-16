@@ -4,9 +4,13 @@ AUTO-GENERATED - Do not edit manually
 """
 
 import requests
-from typing import Optional, Dict, Any
+from typing import Optional, Dict, Any, List, Type, TypeVar
 from .exceptions import LomiError, LomiAuthError, LomiNotFoundError
+from .models import *
+from .services import *
+from pydantic import BaseModel
 
+T = TypeVar("T", bound=BaseModel)
 
 class LomiClient:
     """Main lomi. SDK client"""
@@ -41,24 +45,29 @@ class LomiClient:
         self.beneficiary_payouts = BeneficiaryPayoutsService(self)
         self.webhooks = WebhooksService(self)
         self.webhook_delivery_logs = WebhookDeliveryLogsService(self)
-        self.providers = ProvidersService(self)
     
     def _request(
         self,
         method: str,
         path: str,
+        model: Type[T] = None,
         params: Optional[Dict[str, Any]] = None,
         data: Optional[Dict[str, Any]] = None,
     ) -> Any:
         """Make an HTTP request to the API"""
         url = f"{self.base_url}{path}"
         
+        # Convert Pydantic models to dict if passed as data
+        json_data = data
+        if hasattr(data, 'dict'):
+             json_data = data.dict(exclude_unset=True)
+
         try:
             response = self.session.request(
                 method=method,
                 url=url,
                 params=params,
-                json=data,
+                json=json_data,
             )
             
             if response.status_code == 401:
@@ -68,322 +77,15 @@ class LomiClient:
             elif response.status_code >= 400:
                 raise LomiError(f"API error: {response.text}", response.status_code, response.json() if response.text else None)
             
-            return response.json() if response.text else None
+            resp_data = response.json() if response.text else None
+            
+            # If model class provided, parse response
+            if model and resp_data:
+                if isinstance(resp_data, list):
+                    return [model(**item) for item in resp_data]
+                return model(**resp_data)
+                
+            return resp_data
             
         except requests.RequestException as e:
             raise LomiError(f"Request failed: {str(e)}")
-
-
-
-class AccountsService:
-    """accounts API service"""
-    
-    def __init__(self, client: LomiClient):
-        self._client = client
-    
-    def list(self, **params) -> list:
-        """List accounts"""
-        return self._client._request("GET", "/accounts", params=params)
-    
-    def get(self, id: str) -> dict:
-        """Get a single account"""
-        return self._client._request("GET", f"/accounts/{id}")
-
-
-class OrganizationsService:
-    """organizations API service"""
-    
-    def __init__(self, client: LomiClient):
-        self._client = client
-    
-    def list(self, **params) -> list:
-        """List organizations"""
-        return self._client._request("GET", "/organizations", params=params)
-    
-    def get(self, id: str) -> dict:
-        """Get a single organization"""
-        return self._client._request("GET", f"/organizations/{id}")
-
-
-class CustomersService:
-    """customers API service"""
-    
-    def __init__(self, client: LomiClient):
-        self._client = client
-    
-    def list(self, **params) -> list:
-        """List customers"""
-        return self._client._request("GET", "/customers", params=params)
-    
-    def get(self, id: str) -> dict:
-        """Get a single customer"""
-        return self._client._request("GET", f"/customers/{id}")
-
-    def create(self, data: dict) -> dict:
-        """Create a customer"""
-        return self._client._request("POST", "/customers", data=data)
-
-    def update(self, id: str, data: dict) -> dict:
-        """Update a customer"""
-        return self._client._request("PATCH", f"/customers/{id}", data=data)
-
-    def delete(self, id: str) -> dict:
-        """Delete a customer"""
-        return self._client._request("DELETE", f"/customers/{id}")
-
-
-class PaymentRequestsService:
-    """payment_requests API service"""
-    
-    def __init__(self, client: LomiClient):
-        self._client = client
-    
-    def list(self, **params) -> list:
-        """List payment_requests"""
-        return self._client._request("GET", "/payment-requests", params=params)
-    
-    def get(self, id: str) -> dict:
-        """Get a single payment_request"""
-        return self._client._request("GET", f"/payment-requests/{id}")
-
-
-class TransactionsService:
-    """transactions API service"""
-    
-    def __init__(self, client: LomiClient):
-        self._client = client
-    
-    def list(self, **params) -> list:
-        """List transactions"""
-        return self._client._request("GET", "/transactions", params=params)
-    
-    def get(self, id: str) -> dict:
-        """Get a single transaction"""
-        return self._client._request("GET", f"/transactions/{id}")
-
-
-class RefundsService:
-    """refunds API service"""
-    
-    def __init__(self, client: LomiClient):
-        self._client = client
-    
-    def list(self, **params) -> list:
-        """List refunds"""
-        return self._client._request("GET", "/refunds", params=params)
-    
-    def get(self, id: str) -> dict:
-        """Get a single refund"""
-        return self._client._request("GET", f"/refunds/{id}")
-
-
-class ProductsService:
-    """products API service"""
-    
-    def __init__(self, client: LomiClient):
-        self._client = client
-    
-    def list(self, **params) -> list:
-        """List products"""
-        return self._client._request("GET", "/products", params=params)
-    
-    def get(self, id: str) -> dict:
-        """Get a single product"""
-        return self._client._request("GET", f"/products/{id}")
-
-    def create(self, data: dict) -> dict:
-        """Create a product"""
-        return self._client._request("POST", "/products", data=data)
-
-    def update(self, id: str, data: dict) -> dict:
-        """Update a product"""
-        return self._client._request("PATCH", f"/products/{id}", data=data)
-
-    def delete(self, id: str) -> dict:
-        """Delete a product"""
-        return self._client._request("DELETE", f"/products/{id}")
-
-
-class SubscriptionsService:
-    """subscriptions API service"""
-    
-    def __init__(self, client: LomiClient):
-        self._client = client
-    
-    def list(self, **params) -> list:
-        """List subscriptions"""
-        return self._client._request("GET", "/subscriptions", params=params)
-    
-    def get(self, id: str) -> dict:
-        """Get a single subscription"""
-        return self._client._request("GET", f"/subscriptions/{id}")
-
-    def create(self, data: dict) -> dict:
-        """Create a subscription"""
-        return self._client._request("POST", "/subscriptions", data=data)
-
-    def update(self, id: str, data: dict) -> dict:
-        """Update a subscription"""
-        return self._client._request("PATCH", f"/subscriptions/{id}", data=data)
-
-    def delete(self, id: str) -> dict:
-        """Delete a subscription"""
-        return self._client._request("DELETE", f"/subscriptions/{id}")
-
-
-class DiscountCouponsService:
-    """discount_coupons API service"""
-    
-    def __init__(self, client: LomiClient):
-        self._client = client
-    
-    def list(self, **params) -> list:
-        """List discount_coupons"""
-        return self._client._request("GET", "/discount-coupons", params=params)
-    
-    def get(self, id: str) -> dict:
-        """Get a single discount_coupon"""
-        return self._client._request("GET", f"/discount-coupons/{id}")
-
-
-class CheckoutSessionsService:
-    """checkout_sessions API service"""
-    
-    def __init__(self, client: LomiClient):
-        self._client = client
-    
-    def list(self, **params) -> list:
-        """List checkout_sessions"""
-        return self._client._request("GET", "/checkout-sessions", params=params)
-    
-    def get(self, id: str) -> dict:
-        """Get a single checkout_session"""
-        return self._client._request("GET", f"/checkout-sessions/{id}")
-
-    def create(self, data: dict) -> dict:
-        """Create a checkout_session"""
-        return self._client._request("POST", "/checkout-sessions", data=data)
-
-    def update(self, id: str, data: dict) -> dict:
-        """Update a checkout_session"""
-        return self._client._request("PATCH", f"/checkout-sessions/{id}", data=data)
-
-    def delete(self, id: str) -> dict:
-        """Delete a checkout_session"""
-        return self._client._request("DELETE", f"/checkout-sessions/{id}")
-
-
-class PaymentLinksService:
-    """payment_links API service"""
-    
-    def __init__(self, client: LomiClient):
-        self._client = client
-    
-    def list(self, **params) -> list:
-        """List payment_links"""
-        return self._client._request("GET", "/payment-links", params=params)
-    
-    def get(self, id: str) -> dict:
-        """Get a single payment_link"""
-        return self._client._request("GET", f"/payment-links/{id}")
-
-    def create(self, data: dict) -> dict:
-        """Create a payment_link"""
-        return self._client._request("POST", "/payment-links", data=data)
-
-    def update(self, id: str, data: dict) -> dict:
-        """Update a payment_link"""
-        return self._client._request("PATCH", f"/payment-links/{id}", data=data)
-
-    def delete(self, id: str) -> dict:
-        """Delete a payment_link"""
-        return self._client._request("DELETE", f"/payment-links/{id}")
-
-
-class PayoutsService:
-    """payouts API service"""
-    
-    def __init__(self, client: LomiClient):
-        self._client = client
-    
-    def list(self, **params) -> list:
-        """List payouts"""
-        return self._client._request("GET", "/payouts", params=params)
-    
-    def get(self, id: str) -> dict:
-        """Get a single payout"""
-        return self._client._request("GET", f"/payouts/{id}")
-
-
-class BeneficiaryPayoutsService:
-    """beneficiary_payouts API service"""
-    
-    def __init__(self, client: LomiClient):
-        self._client = client
-    
-    def list(self, **params) -> list:
-        """List beneficiary_payouts"""
-        return self._client._request("GET", "/beneficiary-payouts", params=params)
-    
-    def get(self, id: str) -> dict:
-        """Get a single beneficiary_payout"""
-        return self._client._request("GET", f"/beneficiary-payouts/{id}")
-
-
-class WebhooksService:
-    """webhooks API service"""
-    
-    def __init__(self, client: LomiClient):
-        self._client = client
-    
-    def list(self, **params) -> list:
-        """List webhooks"""
-        return self._client._request("GET", "/webhooks", params=params)
-    
-    def get(self, id: str) -> dict:
-        """Get a single webhook"""
-        return self._client._request("GET", f"/webhooks/{id}")
-
-    def create(self, data: dict) -> dict:
-        """Create a webhook"""
-        return self._client._request("POST", "/webhooks", data=data)
-
-    def update(self, id: str, data: dict) -> dict:
-        """Update a webhook"""
-        return self._client._request("PATCH", f"/webhooks/{id}", data=data)
-
-    def delete(self, id: str) -> dict:
-        """Delete a webhook"""
-        return self._client._request("DELETE", f"/webhooks/{id}")
-
-
-class ProvidersService:
-    """providers API service"""
-
-    def __init__(self, client: LomiClient):
-        self._client = client
-
-    def list(self, **params) -> list:
-        """List providers"""
-        return self._client._request("GET", "/providers", params=params)
-
-    def get(self, id: str) -> dict:
-        """Get a single provider"""
-        return self._client._request("GET", f"/providers/{id}")
-
-
-
-class WebhookDeliveryLogsService:
-    """webhook_delivery_logs API service"""
-    
-    def __init__(self, client: LomiClient):
-        self._client = client
-    
-    def list(self, **params) -> list:
-        """List webhook_delivery_logs"""
-        return self._client._request("GET", "/webhook-delivery-logs", params=params)
-    
-    def get(self, id: str) -> dict:
-        """Get a single webhook_delivery_log"""
-        return self._client._request("GET", f"/webhook-delivery-logs/{id}")
-
