@@ -1,0 +1,11 @@
+import unittest
+from lomi import LomiClient
+
+class TestTransactionsService(unittest.TestCase):
+    def setUp(self):
+        self.client = LomiClient(api_key="test_key")
+
+    def test_service_initialized(self):
+        self.assertIsNotNone(self.client.transactions)
+        
+    # TODO: Add mock tests for Transactions methods
