@@ -9,6 +9,7 @@ class CheckoutSessions(BaseModel):
     amount: float = Field(default=None)
     cancel_url: Optional[str] = Field(default=None)
     checkout_session_id: str = Field(default=None)
+    checkout_url: Optional[str] = Field(default=None)
     created_at: str = Field(default=None)
     created_by: Optional[str] = Field(default=None)
     currency_code: CurrencyCode = Field(default=None)
