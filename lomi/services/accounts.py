@@ -1,20 +1,37 @@
-from typing import List, Optional
-from ..models import Accounts, AccountsCreate, AccountsUpdate
+from __future__ import annotations
+
+from typing import Any, Dict, Optional
+
 from ..client_base import ClientBase
 
+
 class AccountsService(ClientBase):
-    """accounts API service"""
-    
-    
-    def list(self, **params) -> List[Accounts]:
-        """List accounts"""
-        return self._request("GET", "/accounts", model=Accounts, params=params)
-    
-    
-    def get(self, id: str) -> Accounts:
-        """Get a single account"""
-        return self._request("GET", f"/accounts/{id}", model=Accounts)
-    
-    
-    
-    
+    """Public merchant API — generated from OpenAPI allowlist."""
+
+    def check_balance(self, currency: str) -> Any:
+        """Vérifier le solde disponible"""
+        path = "/accounts/balance/check/{currency}"
+        path = path.replace("{currency}", str(currency))
+        return self._request("GET", path)
+
+    def get(self, id: str) -> Any:
+        """Obtenir un compte par ID"""
+        path = "/accounts/{id}"
+        path = path.replace("{id}", str(id))
+        return self._request("GET", path)
+
+    def get_balance(self, params: Optional[Dict[str, Any]] = None) -> Any:
+        """Solde du compte"""
+        path = "/accounts/balance"
+        return self._request("GET", path, params=params)
+
+    def get_balance_breakdown(self, params: Optional[Dict[str, Any]] = None) -> Any:
+        """Détail du solde"""
+        path = "/accounts/balance/breakdown"
+        return self._request("GET", path, params=params)
+
+    def list(self) -> Any:
+        """Lister les comptes"""
+        path = "/accounts"
+        return self._request("GET", path)
+

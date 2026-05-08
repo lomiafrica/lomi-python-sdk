@@ -1,20 +1,21 @@
-from typing import List, Optional
-from ..models import Transactions, TransactionsCreate, TransactionsUpdate
+from __future__ import annotations
+
+from typing import Any, Dict, Optional
+
 from ..client_base import ClientBase
 
+
 class TransactionsService(ClientBase):
-    """transactions API service"""
-    
-    
-    def list(self, **params) -> List[Transactions]:
-        """List transactions"""
-        return self._request("GET", "/transactions", model=Transactions, params=params)
-    
-    
-    def get(self, id: str) -> Transactions:
-        """Get a single transaction"""
-        return self._request("GET", f"/transactions/{id}", model=Transactions)
-    
-    
-    
-    
+    """Public merchant API — generated from OpenAPI allowlist."""
+
+    def get(self, id: str) -> Any:
+        """Obtenir une transaction par ID"""
+        path = "/transactions/{id}"
+        path = path.replace("{id}", str(id))
+        return self._request("GET", path)
+
+    def list(self, params: Optional[Dict[str, Any]] = None) -> Any:
+        """Lister les transactions"""
+        path = "/transactions"
+        return self._request("GET", path, params=params)
+

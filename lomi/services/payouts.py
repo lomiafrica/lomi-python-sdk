@@ -1,24 +1,15 @@
-from typing import List, Optional
-from ..models import Payouts, PayoutsCreate, PayoutsUpdate
+from __future__ import annotations
+
+from typing import Any, Dict, Optional
+
 from ..client_base import ClientBase
 
+
 class PayoutsService(ClientBase):
-    """payouts API service"""
-    
-    
-    def list(self, **params) -> List[Payouts]:
-        """List payouts"""
-        return self._request("GET", "/payouts", model=Payouts, params=params)
-    
-    
-    def get(self, id: str) -> Payouts:
-        """Get a single payout"""
-        return self._request("GET", f"/payouts/{id}", model=Payouts)
-    
-    
-    def create(self, data: PayoutsCreate) -> Payouts:
-        """Create a new payout"""
-        return self._request("POST", "/payouts", model=Payouts, data=data)
-    
-    
-    
+    """Public merchant API — generated from OpenAPI allowlist."""
+
+    def create_wave_payout(self) -> Any:
+        """Lancer un virement Wave"""
+        path = "/payout/wave"
+        return self._request("POST", path)
+

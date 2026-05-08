@@ -1,24 +1,26 @@
-from typing import List, Optional
-from ..models import PaymentRequests, PaymentRequestsCreate, PaymentRequestsUpdate
+from __future__ import annotations
+
+from typing import Any, Dict, Optional
+
 from ..client_base import ClientBase
 
+
 class PaymentRequestsService(ClientBase):
-    """payment_requests API service"""
-    
-    
-    def list(self, **params) -> List[PaymentRequests]:
-        """List payment_requests"""
-        return self._request("GET", "/payment-requests", model=PaymentRequests, params=params)
-    
-    
-    def get(self, id: str) -> PaymentRequests:
-        """Get a single payment_request"""
-        return self._request("GET", f"/payment-requests/{id}", model=PaymentRequests)
-    
-    
-    def create(self, data: PaymentRequestsCreate) -> PaymentRequests:
-        """Create a new payment_request"""
-        return self._request("POST", "/payment-requests", model=PaymentRequests, data=data)
-    
-    
-    
+    """Public merchant API — generated from OpenAPI allowlist."""
+
+    def create(self, body: Optional[Dict[str, Any]] = None) -> Any:
+        """Créer une demande de paiement"""
+        path = "/payment-requests"
+        return self._request("POST", path, data=body)
+
+    def get(self, id: str) -> Any:
+        """Obtenir une demande de paiement par ID"""
+        path = "/payment-requests/{id}"
+        path = path.replace("{id}", str(id))
+        return self._request("GET", path)
+
+    def list(self, params: Optional[Dict[str, Any]] = None) -> Any:
+        """Lister les demandes de paiement"""
+        path = "/payment-requests"
+        return self._request("GET", path, params=params)
+

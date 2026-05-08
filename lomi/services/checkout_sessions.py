@@ -1,24 +1,26 @@
-from typing import List, Optional
-from ..models import CheckoutSessions, CheckoutSessionsCreate, CheckoutSessionsUpdate
+from __future__ import annotations
+
+from typing import Any, Dict, Optional
+
 from ..client_base import ClientBase
 
+
 class CheckoutSessionsService(ClientBase):
-    """checkout_sessions API service"""
-    
-    
-    def list(self, **params) -> List[CheckoutSessions]:
-        """List checkout_sessions"""
-        return self._request("GET", "/checkout-sessions", model=CheckoutSessions, params=params)
-    
-    
-    def get(self, id: str) -> CheckoutSessions:
-        """Get a single checkout_session"""
-        return self._request("GET", f"/checkout-sessions/{id}", model=CheckoutSessions)
-    
-    
-    def create(self, data: CheckoutSessionsCreate) -> CheckoutSessions:
-        """Create a new checkout_session"""
-        return self._request("POST", "/checkout-sessions", model=CheckoutSessions, data=data)
-    
-    
-    
+    """Public merchant API — generated from OpenAPI allowlist."""
+
+    def create(self, body: Optional[Dict[str, Any]] = None) -> Any:
+        """Créer une session de paiement"""
+        path = "/checkout-sessions"
+        return self._request("POST", path, data=body)
+
+    def get(self, id: str) -> Any:
+        """Obtenir une session de paiement par ID"""
+        path = "/checkout-sessions/{id}"
+        path = path.replace("{id}", str(id))
+        return self._request("GET", path)
+
+    def list(self, params: Optional[Dict[str, Any]] = None) -> Any:
+        """Lister les sessions de paiement"""
+        path = "/checkout-sessions"
+        return self._request("GET", path, params=params)
+

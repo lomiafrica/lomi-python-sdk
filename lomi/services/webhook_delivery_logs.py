@@ -1,20 +1,21 @@
-from typing import List, Optional
-from ..models import WebhookDeliveryLogs, WebhookDeliveryLogsCreate, WebhookDeliveryLogsUpdate
+from __future__ import annotations
+
+from typing import Any, Dict, Optional
+
 from ..client_base import ClientBase
 
+
 class WebhookDeliveryLogsService(ClientBase):
-    """webhook_delivery_logs API service"""
-    
-    
-    def list(self, **params) -> List[WebhookDeliveryLogs]:
-        """List webhook_delivery_logs"""
-        return self._request("GET", "/webhook-delivery-logs", model=WebhookDeliveryLogs, params=params)
-    
-    
-    def get(self, id: str) -> WebhookDeliveryLogs:
-        """Get a single webhook_delivery_log"""
-        return self._request("GET", f"/webhook-delivery-logs/{id}", model=WebhookDeliveryLogs)
-    
-    
-    
-    
+    """Public merchant API — generated from OpenAPI allowlist."""
+
+    def get(self, id: str) -> Any:
+        """Obtenir un journal de livraison par ID"""
+        path = "/webhook-delivery-logs/{id}"
+        path = path.replace("{id}", str(id))
+        return self._request("GET", path)
+
+    def list(self, params: Optional[Dict[str, Any]] = None) -> Any:
+        """Lister les journaux de livraison"""
+        path = "/webhook-delivery-logs"
+        return self._request("GET", path, params=params)
+

@@ -1,20 +1,26 @@
-from typing import List, Optional
-from ..models import Organizations, OrganizationsCreate, OrganizationsUpdate
+from __future__ import annotations
+
+from typing import Any, Dict, Optional
+
 from ..client_base import ClientBase
 
+
 class OrganizationsService(ClientBase):
-    """organizations API service"""
-    
-    
-    def list(self, **params) -> List[Organizations]:
-        """List organizations"""
-        return self._request("GET", "/organizations", model=Organizations, params=params)
-    
-    
-    def get(self, id: str) -> Organizations:
-        """Get a single organization"""
-        return self._request("GET", f"/organizations/{id}", model=Organizations)
-    
-    
-    
-    
+    """Public merchant API — generated from OpenAPI allowlist."""
+
+    def get(self, id: str) -> Any:
+        """Organisation par ID"""
+        path = "/organizations/{id}"
+        path = path.replace("{id}", str(id))
+        return self._request("GET", path)
+
+    def get_metrics(self) -> Any:
+        """Indicateurs de l'organisation"""
+        path = "/organizations/metrics"
+        return self._request("GET", path)
+
+    def list(self) -> Any:
+        """Détails de l'organisation"""
+        path = "/organizations"
+        return self._request("GET", path)
+

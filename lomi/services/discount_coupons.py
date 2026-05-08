@@ -1,24 +1,32 @@
-from typing import List, Optional
-from ..models import DiscountCoupons, DiscountCouponsCreate, DiscountCouponsUpdate
+from __future__ import annotations
+
+from typing import Any, Dict, Optional
+
 from ..client_base import ClientBase
 
+
 class DiscountCouponsService(ClientBase):
-    """discount_coupons API service"""
-    
-    
-    def list(self, **params) -> List[DiscountCoupons]:
-        """List discount_coupons"""
-        return self._request("GET", "/discount-coupons", model=DiscountCoupons, params=params)
-    
-    
-    def get(self, id: str) -> DiscountCoupons:
-        """Get a single discount_coupon"""
-        return self._request("GET", f"/discount-coupons/{id}", model=DiscountCoupons)
-    
-    
-    def create(self, data: DiscountCouponsCreate) -> DiscountCoupons:
-        """Create a new discount_coupon"""
-        return self._request("POST", "/discount-coupons", model=DiscountCoupons, data=data)
-    
-    
-    
+    """Public merchant API — generated from OpenAPI allowlist."""
+
+    def create(self) -> Any:
+        """Créer un coupon"""
+        path = "/discount-coupons"
+        return self._request("POST", path)
+
+    def get(self, id: str) -> Any:
+        """Obtenir un coupon par ID"""
+        path = "/discount-coupons/{id}"
+        path = path.replace("{id}", str(id))
+        return self._request("GET", path)
+
+    def get_performance(self, id: str) -> Any:
+        """Indicateurs de performance du coupon"""
+        path = "/discount-coupons/{id}/performance"
+        path = path.replace("{id}", str(id))
+        return self._request("GET", path)
+
+    def list(self) -> Any:
+        """Lister les coupons"""
+        path = "/discount-coupons"
+        return self._request("GET", path)
+

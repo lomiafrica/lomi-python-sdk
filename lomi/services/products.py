@@ -1,24 +1,39 @@
-from typing import List, Optional
-from ..models import Products, ProductsCreate, ProductsUpdate
+from __future__ import annotations
+
+from typing import Any, Dict, Optional
+
 from ..client_base import ClientBase
 
+
 class ProductsService(ClientBase):
-    """products API service"""
-    
-    
-    def list(self, **params) -> List[Products]:
-        """List products"""
-        return self._request("GET", "/products", model=Products, params=params)
-    
-    
-    def get(self, id: str) -> Products:
-        """Get a single product"""
-        return self._request("GET", f"/products/{id}", model=Products)
-    
-    
-    def create(self, data: ProductsCreate) -> Products:
-        """Create a new product"""
-        return self._request("POST", "/products", model=Products, data=data)
-    
-    
-    
+    """Public merchant API — generated from OpenAPI allowlist."""
+
+    def add_price(self, id: str) -> Any:
+        """Ajouter un prix à un produit"""
+        path = "/products/{id}/prices"
+        path = path.replace("{id}", str(id))
+        return self._request("POST", path)
+
+    def create(self) -> Any:
+        """Créer un produit"""
+        path = "/products"
+        return self._request("POST", path)
+
+    def get(self, id: str) -> Any:
+        """Obtenir un produit par ID"""
+        path = "/products/{id}"
+        path = path.replace("{id}", str(id))
+        return self._request("GET", path)
+
+    def list(self, params: Optional[Dict[str, Any]] = None) -> Any:
+        """Lister les produits"""
+        path = "/products"
+        return self._request("GET", path, params=params)
+
+    def set_default_price(self, id: str, priceId: str) -> Any:
+        """Définir le prix par défaut"""
+        path = "/products/{id}/prices/{priceId}/set-default"
+        path = path.replace("{id}", str(id))
+        path = path.replace("{priceId}", str(priceId))
+        return self._request("POST", path)
+

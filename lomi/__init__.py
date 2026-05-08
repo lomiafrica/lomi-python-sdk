@@ -1,10 +1,6 @@
-"""
-lomi. Python SDK
-AUTO-GENERATED - Do not edit manually
-"""
+"""lomi Python SDK — public merchant API surface."""
 
 from .client import LomiClient
 from .exceptions import LomiError, LomiAuthError, LomiNotFoundError
-from .models import *
 
-__version__ = "1.0.0"
+__all__ = ["LomiClient", "LomiError", "LomiAuthError", "LomiNotFoundError"]

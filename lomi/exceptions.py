@@ -1,19 +1,20 @@
-"""
-lomi. SDK Exceptions
-AUTO-GENERATED - Do not edit manually
-"""
+"""lomi-sdk exceptions."""
+
+from typing import Optional, Any
+
 
 class LomiError(Exception):
-    """Base exception for lomi. SDK"""
-    def __init__(self, message: str, status_code: int = None, body: dict = None):
+    """Base SDK error."""
+
+    def __init__(self, message: str, status_code: Optional[int] = None, body: Any = None):
         super().__init__(message)
         self.status_code = status_code
         self.body = body
 
+
 class LomiAuthError(LomiError):
-    """Authentication error"""
-    pass
+    """Invalid API credentials."""
+
 
 class LomiNotFoundError(LomiError):
-    """Resource not found error"""
-    pass
+    """Resource missing."""
