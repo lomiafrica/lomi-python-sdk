@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T06:18:00.222Z",
+  "generatedAt": "2026-05-20T10:09:11.303Z",
   "language": "python",
   "naming": "ts_method_names_manifest_pep8_sdk_methods_are_snake_case_in_code",
   "sdk": {
@@ -10,16 +10,12 @@
       "getBalanceBreakdown",
       "list"
     ],
-    "beneficiaryPayouts": [
-      "create",
-      "get",
-      "list"
-    ],
-    "charge": [
-      "createMtnCharge"
-    ],
     "charges": [
-      "createWaveCharge"
+      "cancelCardCharge",
+      "createCardCharge",
+      "createMtnCharge",
+      "createWaveCharge",
+      "getCardCharge"
     ],
     "checkoutSessions": [
       "create",
@@ -59,11 +55,6 @@
       "getMetrics",
       "list"
     ],
-    "paymentIntents": [
-      "cancel",
-      "create",
-      "get"
-    ],
     "paymentLinks": [
       "create",
       "get",
@@ -74,11 +65,9 @@
       "get",
       "list"
     ],
-    "payout": [
-      "createSpiPayout"
-    ],
     "payouts": [
-      "createWavePayout",
+      "create",
+      "get",
       "list"
     ],
     "products": [
@@ -129,16 +118,12 @@
       "get_balance_breakdown",
       "list"
     ],
-    "beneficiary_payouts": [
-      "create",
-      "get",
-      "list"
-    ],
-    "charge": [
-      "create_mtn_charge"
-    ],
     "charges": [
-      "create_wave_charge"
+      "cancel_card_charge",
+      "create_card_charge",
+      "create_mtn_charge",
+      "create_wave_charge",
+      "get_card_charge"
     ],
     "checkout_sessions": [
       "create",
@@ -178,11 +163,6 @@
       "get_metrics",
       "list"
     ],
-    "payment_intents": [
-      "cancel",
-      "create",
-      "get"
-    ],
     "payment_links": [
       "create",
       "get",
@@ -193,11 +173,9 @@
       "get",
       "list"
     ],
-    "payout": [
-      "create_spi_payout"
-    ],
     "payouts": [
-      "create_wave_payout",
+      "create",
+      "get",
       "list"
     ],
     "products": [

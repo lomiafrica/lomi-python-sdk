@@ -8,10 +8,16 @@ from ..client_base import ClientBase
 class PayoutsService(ClientBase):
     """Public merchant API — generated from OpenAPI allowlist."""
 
-    def create_wave_payout(self) -> Any:
-        """Lancer un virement Wave"""
-        path = "/payout/wave"
+    def create(self) -> Any:
+        """Créer un virement"""
+        path = "/payouts"
         return self._request("POST", path)
+
+    def get(self, id: str) -> Any:
+        """Obtenir un virement"""
+        path = "/payouts/{id}"
+        path = path.replace("{id}", str(id))
+        return self._request("GET", path)
 
     def list(self, params: Optional[Dict[str, Any]] = None) -> Any:
         """Lister les virements"""
