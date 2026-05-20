@@ -8,8 +8,19 @@ from ..client_base import ClientBase
 class RefundsService(ClientBase):
     """Public merchant API — generated from OpenAPI allowlist."""
 
-    def create_wave_refund(self) -> Any:
-        """Lancer un remboursement Wave"""
-        path = "/refund/wave"
+    def create(self) -> Any:
+        """Créer un remboursement"""
+        path = "/refunds"
         return self._request("POST", path)
+
+    def get(self, id: str) -> Any:
+        """Obtenir un remboursement"""
+        path = "/refunds/{id}"
+        path = path.replace("{id}", str(id))
+        return self._request("GET", path)
+
+    def list(self, params: Optional[Dict[str, Any]] = None) -> Any:
+        """Lister les remboursements"""
+        path = "/refunds"
+        return self._request("GET", path, params=params)
 

@@ -5,16 +5,11 @@ from typing import Any, Dict, Optional
 from ..client_base import ClientBase
 
 
-class PayoutsService(ClientBase):
+class ProvidersService(ClientBase):
     """Public merchant API — generated from OpenAPI allowlist."""
 
-    def create_wave_payout(self) -> Any:
-        """Lancer un virement Wave"""
-        path = "/payout/wave"
-        return self._request("POST", path)
-
     def list(self, params: Optional[Dict[str, Any]] = None) -> Any:
-        """Lister les virements"""
-        path = "/payouts"
+        """List payment providers"""
+        path = "/providers"
         return self._request("GET", path, params=params)
 

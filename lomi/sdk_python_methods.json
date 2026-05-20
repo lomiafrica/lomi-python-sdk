@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-08T14:16:39.253Z",
+  "generatedAt": "2026-05-20T06:18:00.222Z",
   "language": "python",
   "naming": "ts_method_names_manifest_pep8_sdk_methods_are_snake_case_in_code",
   "sdk": {
@@ -15,6 +15,9 @@
       "get",
       "list"
     ],
+    "charge": [
+      "createMtnCharge"
+    ],
     "charges": [
       "createWaveCharge"
     ],
@@ -25,9 +28,17 @@
     ],
     "customers": [
       "create",
+      "createPortalLaunchSession",
       "delete",
       "get",
+      "getPortalAudit",
       "getTransactions",
+      "list",
+      "update"
+    ],
+    "customerSubscriptions": [
+      "delete",
+      "get",
       "list",
       "update"
     ],
@@ -37,13 +48,21 @@
       "getPerformance",
       "list"
     ],
+    "merchants": [
+      "get",
+      "getArr",
+      "getBalance",
+      "getMrr"
+    ],
     "organizations": [
       "get",
       "getMetrics",
       "list"
     ],
     "paymentIntents": [
-      "create"
+      "cancel",
+      "create",
+      "get"
     ],
     "paymentLinks": [
       "create",
@@ -55,8 +74,12 @@
       "get",
       "list"
     ],
+    "payout": [
+      "createSpiPayout"
+    ],
     "payouts": [
-      "createWavePayout"
+      "createWavePayout",
+      "list"
     ],
     "products": [
       "addPrice",
@@ -65,14 +88,20 @@
       "list",
       "setDefaultPrice"
     ],
+    "providers": [
+      "list"
+    ],
     "refunds": [
-      "createWaveRefund"
+      "create",
+      "get",
+      "list"
     ],
     "subscriptions": [
       "cancel",
       "findByCustomer",
       "get",
-      "list"
+      "list",
+      "update"
     ],
     "transactions": [
       "get",
@@ -83,8 +112,12 @@
       "list"
     ],
     "webhooks": [
+      "create",
+      "delete",
       "get",
       "list",
+      "retryDelivery",
+      "test",
       "update"
     ]
   },
@@ -101,6 +134,9 @@
       "get",
       "list"
     ],
+    "charge": [
+      "create_mtn_charge"
+    ],
     "charges": [
       "create_wave_charge"
     ],
@@ -111,9 +147,17 @@
     ],
     "customers": [
       "create",
+      "create_portal_launch_session",
       "delete",
       "get",
+      "get_portal_audit",
       "get_transactions",
+      "list",
+      "update"
+    ],
+    "customer_subscriptions": [
+      "delete",
+      "get",
       "list",
       "update"
     ],
@@ -123,13 +167,21 @@
       "get_performance",
       "list"
     ],
+    "merchants": [
+      "get",
+      "get_arr",
+      "get_balance",
+      "get_mrr"
+    ],
     "organizations": [
       "get",
       "get_metrics",
       "list"
     ],
     "payment_intents": [
-      "create"
+      "cancel",
+      "create",
+      "get"
     ],
     "payment_links": [
       "create",
@@ -141,8 +193,12 @@
       "get",
       "list"
     ],
+    "payout": [
+      "create_spi_payout"
+    ],
     "payouts": [
-      "create_wave_payout"
+      "create_wave_payout",
+      "list"
     ],
     "products": [
       "add_price",
@@ -151,14 +207,20 @@
       "list",
       "set_default_price"
     ],
+    "providers": [
+      "list"
+    ],
     "refunds": [
-      "create_wave_refund"
+      "create",
+      "get",
+      "list"
     ],
     "subscriptions": [
       "cancel",
       "find_by_customer",
       "get",
-      "list"
+      "list",
+      "update"
     ],
     "transactions": [
       "get",
@@ -169,8 +231,12 @@
       "list"
     ],
     "webhooks": [
+      "create",
+      "delete",
       "get",
       "list",
+      "retry_delivery",
+      "test",
       "update"
     ]
   }

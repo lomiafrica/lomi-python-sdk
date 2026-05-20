@@ -31,3 +31,9 @@ class SubscriptionsService(ClientBase):
         path = "/subscriptions"
         return self._request("GET", path, params=params)
 
+    def update(self, id: str) -> Any:
+        """Mettre à jour un abonnement"""
+        path = "/subscriptions/{id}"
+        path = path.replace("{id}", str(id))
+        return self._request("PATCH", path)
+

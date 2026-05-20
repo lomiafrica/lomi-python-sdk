@@ -13,6 +13,12 @@ class CustomersService(ClientBase):
         path = "/customers"
         return self._request("POST", path, data=body)
 
+    def create_portal_launch_session(self, id: str, body: Optional[Dict[str, Any]] = None) -> Any:
+        """Créer une session de lancement du portail client"""
+        path = "/customers/{id}/portal-launch-session"
+        path = path.replace("{id}", str(id))
+        return self._request("POST", path, data=body)
+
     def delete(self, id: str) -> Any:
         """Supprimer un client"""
         path = "/customers/{id}"
@@ -24,6 +30,12 @@ class CustomersService(ClientBase):
         path = "/customers/{id}"
         path = path.replace("{id}", str(id))
         return self._request("GET", path)
+
+    def get_portal_audit(self, id: str, params: Optional[Dict[str, Any]] = None) -> Any:
+        """Hosted customer portal audit"""
+        path = "/customers/{id}/portal-audit"
+        path = path.replace("{id}", str(id))
+        return self._request("GET", path, params=params)
 
     def get_transactions(self, id: str) -> Any:
         """Transactions du client"""
