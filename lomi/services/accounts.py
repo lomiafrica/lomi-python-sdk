@@ -14,12 +14,6 @@ class AccountsService(ClientBase):
         path = path.replace("{currency}", str(currency))
         return self._request("GET", path)
 
-    def get(self, id: str) -> Any:
-        """Obtenir un compte par ID"""
-        path = "/accounts/{id}"
-        path = path.replace("{id}", str(id))
-        return self._request("GET", path)
-
     def get_balance(self, params: Optional[Dict[str, Any]] = None) -> Any:
         """Solde du compte"""
         path = "/accounts/balance"
@@ -29,9 +23,4 @@ class AccountsService(ClientBase):
         """Détail du solde"""
         path = "/accounts/balance/breakdown"
         return self._request("GET", path, params=params)
-
-    def list(self) -> Any:
-        """Lister les comptes"""
-        path = "/accounts"
-        return self._request("GET", path)
 

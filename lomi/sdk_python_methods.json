@@ -1,14 +1,12 @@
 {
-  "generatedAt": "2026-05-20T10:09:11.303Z",
+  "generatedAt": "2026-06-11T16:10:16.461Z",
   "language": "python",
   "naming": "ts_method_names_manifest_pep8_sdk_methods_are_snake_case_in_code",
   "sdk": {
     "accounts": [
       "checkBalance",
-      "get",
       "getBalance",
-      "getBalanceBreakdown",
-      "list"
+      "getBalanceBreakdown"
     ],
     "charges": [
       "cancelCardCharge",
@@ -113,10 +111,8 @@
   "python_methods": {
     "accounts": [
       "check_balance",
-      "get",
       "get_balance",
-      "get_balance_breakdown",
-      "list"
+      "get_balance_breakdown"
     ],
     "charges": [
       "cancel_card_charge",
