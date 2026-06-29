@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from ..client_base import ClientBase
+from ..client_base import ClientBase, _safe_path_param
 
 
 class AccountsService(ClientBase):
@@ -11,7 +11,7 @@ class AccountsService(ClientBase):
     def check_balance(self, currency: str) -> Any:
         """Vérifier le solde disponible"""
         path = "/accounts/balance/check/{currency}"
-        path = path.replace("{currency}", str(currency))
+        path = path.replace("{currency}", _safe_path_param(currency))
         return self._request("GET", path)
 
     def get_balance(self, params: Optional[Dict[str, Any]] = None) -> Any:
