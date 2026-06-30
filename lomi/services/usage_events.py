@@ -5,22 +5,22 @@ from typing import Any, Dict, Optional
 from ..client_base import ClientBase
 
 
-class PayoutsService(ClientBase):
+class UsageEventsService(ClientBase):
     """Public merchant API — generated from OpenAPI allowlist."""
 
     def create(self) -> Any:
-        """Créer un virement"""
-        path = "/payouts"
+        """Record a usage event"""
+        path = "/usage-events"
         return self._request("POST", path)
 
     def get(self, id: str) -> Any:
-        """Obtenir un virement"""
-        path = "/payouts/{id}"
+        """Get a usage event"""
+        path = "/usage-events/{id}"
         path = path.replace("{id}", str(id))
         return self._request("GET", path)
 
     def list(self, params: Optional[Dict[str, Any]] = None) -> Any:
-        """Lister les virements"""
-        path = "/payouts"
+        """List usage events"""
+        path = "/usage-events"
         return self._request("GET", path, params=params)
 

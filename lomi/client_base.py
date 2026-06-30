@@ -1,16 +1,12 @@
 
 from typing import Optional, Dict, Any, TYPE_CHECKING
-from urllib.parse import quote
+import warnings
+import requests
 
 from .exceptions import LomiError, LomiAuthError, LomiNotFoundError
 
 if TYPE_CHECKING:
     from .client import LomiClient
-
-
-def _safe_path_param(value: Any) -> str:
-    """URL-encode a value for safe interpolation into a URL path segment."""
-    return quote(str(value), safe="")
 
 
 class ClientBase:

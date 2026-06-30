@@ -5,17 +5,17 @@ from typing import Any, Dict, Optional
 from ..client_base import ClientBase
 
 
-class TransactionsService(ClientBase):
+class RiskAssessmentsService(ClientBase):
     """Public merchant API — generated from OpenAPI allowlist."""
 
-    def get(self, id: str) -> Any:
-        """Obtenir une transaction par ID"""
-        path = "/transactions/{id}"
+    def find_one(self, id: str) -> Any:
+        """Get a risk assessment"""
+        path = "/risk-assessments/{id}"
         path = path.replace("{id}", str(id))
         return self._request("GET", path)
 
-    def list(self, params: Optional[Dict[str, Any]] = None) -> Any:
-        """Lister les transactions"""
-        path = "/transactions"
+    def list_assessments(self, params: Optional[Dict[str, Any]] = None) -> Any:
+        """List payment risk assessments"""
+        path = "/risk-assessments"
         return self._request("GET", path, params=params)
 

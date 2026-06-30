@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from ..client_base import ClientBase, _safe_path_param
+from ..client_base import ClientBase
 
 
 class WebhooksService(ClientBase):
@@ -16,13 +16,13 @@ class WebhooksService(ClientBase):
     def delete(self, id: str) -> Any:
         """Supprimer un webhook"""
         path = "/webhooks/{id}"
-        path = path.replace("{id}", _safe_path_param(id))
+        path = path.replace("{id}", str(id))
         return self._request("DELETE", path)
 
     def get(self, id: str) -> Any:
         """Obtenir un webhook par ID"""
         path = "/webhooks/{id}"
-        path = path.replace("{id}", _safe_path_param(id))
+        path = path.replace("{id}", str(id))
         return self._request("GET", path)
 
     def list(self) -> Any:
@@ -33,19 +33,19 @@ class WebhooksService(ClientBase):
     def retry_delivery(self, webhookId: str, logId: str) -> Any:
         """Relancer une livraison webhook"""
         path = "/webhooks/{webhookId}/logs/{logId}/retry"
-        path = path.replace("{webhookId}", _safe_path_param(webhookId))
-        path = path.replace("{logId}", _safe_path_param(logId))
+        path = path.replace("{webhookId}", str(webhookId))
+        path = path.replace("{logId}", str(logId))
         return self._request("POST", path)
 
     def test(self, id: str) -> Any:
         """Envoyer un événement test au webhook"""
         path = "/webhooks/{id}/test"
-        path = path.replace("{id}", _safe_path_param(id))
+        path = path.replace("{id}", str(id))
         return self._request("POST", path)
 
     def update(self, id: str, body: Optional[Dict[str, Any]] = None) -> Any:
         """Mettre à jour un webhook"""
         path = "/webhooks/{id}"
-        path = path.replace("{id}", _safe_path_param(id))
+        path = path.replace("{id}", str(id))
         return self._request("PATCH", path, data=body)
 

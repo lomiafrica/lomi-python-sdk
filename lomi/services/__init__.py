@@ -4,7 +4,10 @@ from .checkout_sessions import CheckoutSessionsService
 from .customer_subscriptions import CustomerSubscriptionsService
 from .customers import CustomersService
 from .discount_coupons import DiscountCouponsService
+from .disputes import DisputesService
 from .merchants import MerchantsService
+from .meters import MetersService
+from .organization import OrganizationService
 from .organizations import OrganizationsService
 from .payment_links import PaymentLinksService
 from .payment_requests import PaymentRequestsService
@@ -12,7 +15,12 @@ from .payouts import PayoutsService
 from .products import ProductsService
 from .providers import ProvidersService
 from .refunds import RefundsService
+from .risk_assessments import RiskAssessmentsService
+from .settlements import SettlementsService
 from .subscriptions import SubscriptionsService
 from .transactions import TransactionsService
+from .usage_billing import UsageBillingService
+from .usage_events import UsageEventsService
+from .usage_subscriptions import UsageSubscriptionsService
 from .webhook_delivery_logs import WebhookDeliveryLogsService
 from .webhooks import WebhooksService

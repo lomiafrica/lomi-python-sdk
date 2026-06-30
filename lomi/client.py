@@ -19,17 +19,13 @@ def _flatten_data(data):
 class LomiClient:
     """Merchant API client (public routes only)."""
 
-    DEFAULT_TIMEOUT = 30
-
     def __init__(
         self,
         api_key: str,
         base_url: str = "https://api.lomi.africa",
         environment: str = "live",
-        timeout: Optional[int] = None,
     ):
         self.api_key = api_key
-        self.timeout = timeout if timeout is not None else self.DEFAULT_TIMEOUT
         test_host = environment in ("test", "sandbox") or (
             isinstance(environment, str) and environment.lower() == "test"
         )
@@ -46,7 +42,10 @@ class LomiClient:
         self.customers = CustomersService(self)
         self.customer_subscriptions = CustomerSubscriptionsService(self)
         self.discount_coupons = DiscountCouponsService(self)
+        self.disputes = DisputesService(self)
         self.merchants = MerchantsService(self)
+        self.meters = MetersService(self)
+        self.organization = OrganizationService(self)
         self.organizations = OrganizationsService(self)
         self.payment_links = PaymentLinksService(self)
         self.payment_requests = PaymentRequestsService(self)
@@ -54,8 +53,13 @@ class LomiClient:
         self.products = ProductsService(self)
         self.providers = ProvidersService(self)
         self.refunds = RefundsService(self)
+        self.risk_assessments = RiskAssessmentsService(self)
+        self.settlements = SettlementsService(self)
         self.subscriptions = SubscriptionsService(self)
         self.transactions = TransactionsService(self)
+        self.usage_billing = UsageBillingService(self)
+        self.usage_events = UsageEventsService(self)
+        self.usage_subscriptions = UsageSubscriptionsService(self)
         self.webhook_delivery_logs = WebhookDeliveryLogsService(self)
         self.webhooks = WebhooksService(self)
 
@@ -74,7 +78,6 @@ class LomiClient:
                 url=url,
                 params=params,
                 json=json_data,
-                timeout=self.timeout,
             )
 
             if response.status_code == 401:

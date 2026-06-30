@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-11T16:10:16.461Z",
+  "generatedAt": "2026-06-30T10:04:38.745Z",
   "language": "python",
   "naming": "ts_method_names_manifest_pep8_sdk_methods_are_snake_case_in_code",
   "sdk": {
@@ -12,6 +12,7 @@
       "cancelCardCharge",
       "createCardCharge",
       "createMtnCharge",
+      "createSwitchCharge",
       "createWaveCharge",
       "getCardCharge"
     ],
@@ -42,11 +43,26 @@
       "getPerformance",
       "list"
     ],
+    "disputes": [
+      "get",
+      "list"
+    ],
     "merchants": [
       "get",
       "getArr",
       "getBalance",
       "getMrr"
+    ],
+    "meters": [
+      "create",
+      "get",
+      "getCustomerBalance",
+      "list",
+      "update"
+    ],
+    "organization": [
+      "getSettings",
+      "updateSettings"
     ],
     "organizations": [
       "get",
@@ -83,16 +99,42 @@
       "get",
       "list"
     ],
+    "riskAssessments": [
+      "findOne",
+      "listAssessments"
+    ],
+    "settlements": [
+      "findAll",
+      "findTransactions"
+    ],
     "subscriptions": [
       "cancel",
+      "changePlan",
       "findByCustomer",
       "get",
       "list",
+      "uncancel",
       "update"
     ],
     "transactions": [
       "get",
       "list"
+    ],
+    "usageBilling": [
+      "checkEntitlement",
+      "createEntitlement",
+      "getRevenue",
+      "getSubscriptionUsage",
+      "grantCredits",
+      "listPeriods"
+    ],
+    "usageEvents": [
+      "create",
+      "get",
+      "list"
+    ],
+    "usageSubscriptions": [
+      "create"
     ],
     "webhookDeliveryLogs": [
       "get",
@@ -118,6 +160,7 @@
       "cancel_card_charge",
       "create_card_charge",
       "create_mtn_charge",
+      "create_switch_charge",
       "create_wave_charge",
       "get_card_charge"
     ],
@@ -148,11 +191,26 @@
       "get_performance",
       "list"
     ],
+    "disputes": [
+      "get",
+      "list"
+    ],
     "merchants": [
       "get",
       "get_arr",
       "get_balance",
       "get_mrr"
+    ],
+    "meters": [
+      "create",
+      "get",
+      "get_customer_balance",
+      "list",
+      "update"
+    ],
+    "organization": [
+      "get_settings",
+      "update_settings"
     ],
     "organizations": [
       "get",
@@ -189,16 +247,42 @@
       "get",
       "list"
     ],
+    "risk_assessments": [
+      "find_one",
+      "list_assessments"
+    ],
+    "settlements": [
+      "find_all",
+      "find_transactions"
+    ],
     "subscriptions": [
       "cancel",
+      "change_plan",
       "find_by_customer",
       "get",
       "list",
+      "uncancel",
       "update"
     ],
     "transactions": [
       "get",
       "list"
+    ],
+    "usage_billing": [
+      "check_entitlement",
+      "create_entitlement",
+      "get_revenue",
+      "get_subscription_usage",
+      "grant_credits",
+      "list_periods"
+    ],
+    "usage_events": [
+      "create",
+      "get",
+      "list"
+    ],
+    "usage_subscriptions": [
+      "create"
     ],
     "webhook_delivery_logs": [
       "get",
