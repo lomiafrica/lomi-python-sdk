@@ -19,13 +19,17 @@ def _flatten_data(data):
 class LomiClient:
     """Merchant API client (public routes only)."""
 
+    DEFAULT_TIMEOUT = 30
+
     def __init__(
         self,
         api_key: str,
         base_url: str = "https://api.lomi.africa",
         environment: str = "live",
+        timeout: Optional[int] = None,
     ):
         self.api_key = api_key
+        self.timeout = timeout if timeout is not None else self.DEFAULT_TIMEOUT
         test_host = environment in ("test", "sandbox") or (
             isinstance(environment, str) and environment.lower() == "test"
         )
@@ -70,6 +74,7 @@ class LomiClient:
                 url=url,
                 params=params,
                 json=json_data,
+                timeout=self.timeout,
             )
 
             if response.status_code == 401:

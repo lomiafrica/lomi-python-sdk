@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from ..client_base import ClientBase
+from ..client_base import ClientBase, _safe_path_param
 
 
 class RefundsService(ClientBase):
@@ -16,7 +16,7 @@ class RefundsService(ClientBase):
     def get(self, id: str) -> Any:
         """Obtenir un remboursement"""
         path = "/refunds/{id}"
-        path = path.replace("{id}", str(id))
+        path = path.replace("{id}", _safe_path_param(id))
         return self._request("GET", path)
 
     def list(self, params: Optional[Dict[str, Any]] = None) -> Any:

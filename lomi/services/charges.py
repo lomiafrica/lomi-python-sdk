@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from ..client_base import ClientBase
+from ..client_base import ClientBase, _safe_path_param
 
 
 class ChargesService(ClientBase):
@@ -11,7 +11,7 @@ class ChargesService(ClientBase):
     def cancel_card_charge(self, id: str) -> Any:
         """Annuler un encaissement carte"""
         path = "/charge/card/{id}/cancel"
-        path = path.replace("{id}", str(id))
+        path = path.replace("{id}", _safe_path_param(id))
         return self._request("POST", path)
 
     def create_card_charge(self, body: Optional[Dict[str, Any]] = None) -> Any:
@@ -32,6 +32,6 @@ class ChargesService(ClientBase):
     def get_card_charge(self, id: str) -> Any:
         """Obtenir un encaissement carte"""
         path = "/charge/card/{id}"
-        path = path.replace("{id}", str(id))
+        path = path.replace("{id}", _safe_path_param(id))
         return self._request("GET", path)
 

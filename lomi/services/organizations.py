@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from ..client_base import ClientBase
+from ..client_base import ClientBase, _safe_path_param
 
 
 class OrganizationsService(ClientBase):
@@ -11,7 +11,7 @@ class OrganizationsService(ClientBase):
     def get(self, id: str) -> Any:
         """Organisation par ID"""
         path = "/organizations/{id}"
-        path = path.replace("{id}", str(id))
+        path = path.replace("{id}", _safe_path_param(id))
         return self._request("GET", path)
 
     def get_metrics(self) -> Any:
