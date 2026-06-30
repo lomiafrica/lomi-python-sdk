@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-30T10:04:38.745Z",
+  "generatedAt": "2026-06-30T10:27:29.803Z",
   "language": "python",
   "naming": "ts_method_names_manifest_pep8_sdk_methods_are_snake_case_in_code",
   "sdk": {
@@ -44,6 +44,10 @@
       "list"
     ],
     "disputes": [
+      "get",
+      "list"
+    ],
+    "logs": [
       "get",
       "list"
     ],
@@ -192,6 +196,10 @@
       "list"
     ],
     "disputes": [
+      "get",
+      "list"
+    ],
+    "logs": [
       "get",
       "list"
     ],

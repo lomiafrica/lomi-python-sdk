@@ -5,6 +5,7 @@ from .customer_subscriptions import CustomerSubscriptionsService
 from .customers import CustomersService
 from .discount_coupons import DiscountCouponsService
 from .disputes import DisputesService
+from .logs import LogsService
 from .merchants import MerchantsService
 from .meters import MetersService
 from .organization import OrganizationService

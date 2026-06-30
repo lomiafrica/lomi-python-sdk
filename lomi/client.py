@@ -43,6 +43,7 @@ class LomiClient:
         self.customer_subscriptions = CustomerSubscriptionsService(self)
         self.discount_coupons = DiscountCouponsService(self)
         self.disputes = DisputesService(self)
+        self.logs = LogsService(self)
         self.merchants = MerchantsService(self)
         self.meters = MetersService(self)
         self.organization = OrganizationService(self)
