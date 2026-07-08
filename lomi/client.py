@@ -40,7 +40,6 @@ class LomiClient:
         self.charges = ChargesService(self)
         self.checkout_sessions = CheckoutSessionsService(self)
         self.customers = CustomersService(self)
-        self.customer_subscriptions = CustomerSubscriptionsService(self)
         self.discount_coupons = DiscountCouponsService(self)
         self.disputes = DisputesService(self)
         self.logs = LogsService(self)

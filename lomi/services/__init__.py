@@ -1,7 +1,6 @@
 from .accounts import AccountsService
 from .charges import ChargesService
 from .checkout_sessions import CheckoutSessionsService
-from .customer_subscriptions import CustomerSubscriptionsService
 from .customers import CustomersService
 from .discount_coupons import DiscountCouponsService
 from .disputes import DisputesService

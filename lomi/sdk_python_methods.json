@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-30T11:42:12.362Z",
+  "generatedAt": "2026-07-08T16:57:23.487Z",
   "language": "python",
   "naming": "ts_method_names_manifest_pep8_sdk_methods_are_snake_case_in_code",
   "sdk": {
@@ -29,13 +29,6 @@
       "get",
       "getPortalAudit",
       "getTransactions",
-      "list",
-      "listAll",
-      "update"
-    ],
-    "customerSubscriptions": [
-      "delete",
-      "get",
       "list",
       "listAll",
       "update"
@@ -202,13 +195,6 @@
       "get",
       "get_portal_audit",
       "get_transactions",
-      "list",
-      "list_all",
-      "update"
-    ],
-    "customer_subscriptions": [
-      "delete",
-      "get",
       "list",
       "list_all",
       "update"
