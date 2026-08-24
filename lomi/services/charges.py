@@ -20,7 +20,7 @@ class ChargesService(ClientBase):
         return self._request("POST", path, data=body)
 
     def create_mtn_charge(self, body: Optional[Dict[str, Any]] = None) -> Any:
-        """Create MTN MoMo charge"""
+        """Create MTN charge"""
         path = "/charge/mtn"
         return self._request("POST", path, data=body)
 
