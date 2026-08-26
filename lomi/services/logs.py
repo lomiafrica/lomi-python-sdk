@@ -8,12 +8,11 @@ from ..client_base import ClientBase
 class LogsService(ClientBase):
     """Public merchant API — generated from OpenAPI allowlist."""
 
-    def get(self, type: str, id: str) -> Any:
+    def get(self, id: str, params: Optional[Dict[str, Any]] = None) -> Any:
         """Get a log entry"""
-        path = "/logs/{type}/{id}"
-        path = path.replace("{type}", str(type))
+        path = "/logs/{id}"
         path = path.replace("{id}", str(id))
-        return self._request("GET", path)
+        return self._request("GET", path, params=params)
 
     def list(self, params: Optional[Dict[str, Any]] = None) -> Any:
         """List logs"""

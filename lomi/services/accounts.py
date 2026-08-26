@@ -10,7 +10,7 @@ class AccountsService(ClientBase):
 
     def check_balance(self, currency: str) -> Any:
         """Vérifier le solde disponible"""
-        path = "/accounts/balance/check/{currency}"
+        path = "/accounts/balance/{currency}"
         path = path.replace("{currency}", str(currency))
         return self._request("GET", path)
 

@@ -32,7 +32,7 @@ class ProductsService(ClientBase):
 
     def set_default_price(self, id: str, priceId: str) -> Any:
         """Définir le prix par défaut"""
-        path = "/products/{id}/prices/{priceId}/set-default"
+        path = "/products/{id}/prices/{priceId}/default"
         path = path.replace("{id}", str(id))
         path = path.replace("{priceId}", str(priceId))
         return self._request("POST", path)

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-08T16:57:23.487Z",
+  "generatedAt": "2026-08-25T23:42:26.816Z",
   "language": "python",
   "naming": "ts_method_names_manifest_pep8_sdk_methods_are_snake_case_in_code",
   "sdk": {
@@ -22,23 +22,24 @@
       "list",
       "listAll"
     ],
-    "customers": [
-      "create",
-      "createPortalLaunchSession",
-      "delete",
-      "get",
-      "getPortalAudit",
-      "getTransactions",
-      "list",
-      "listAll",
-      "update"
-    ],
-    "discountCoupons": [
+    "coupons": [
       "create",
       "get",
       "getPerformance",
       "list",
       "listAll"
+    ],
+    "customers": [
+      "create",
+      "createPortalSession",
+      "delete",
+      "get",
+      "getPortalAudit",
+      "getSubscriptions",
+      "getTransactions",
+      "list",
+      "listAll",
+      "update"
     ],
     "disputes": [
       "get",
@@ -64,15 +65,13 @@
       "listAll",
       "update"
     ],
-    "organization": [
-      "getSettings",
-      "updateSettings"
-    ],
     "organizations": [
       "get",
       "getMetrics",
+      "getRadarSettings",
       "list",
-      "listAll"
+      "listAll",
+      "updateRadarSettings"
     ],
     "paymentLinks": [
       "create",
@@ -115,18 +114,20 @@
       "listAssessments"
     ],
     "settlements": [
+      "createInstant",
       "findAll",
       "findAllAll",
-      "findTransactions"
+      "findTransactions",
+      "getInstant"
     ],
     "subscriptions": [
       "cancel",
       "changePlan",
-      "findByCustomer",
       "get",
+      "getUsage",
       "list",
       "listAll",
-      "uncancel",
+      "resume",
       "update"
     ],
     "transactions": [
@@ -134,34 +135,26 @@
       "list",
       "listAll"
     ],
-    "usageBilling": [
+    "usage": [
       "checkEntitlement",
-      "createEntitlement",
-      "getRevenue",
-      "getSubscriptionUsage",
-      "grantCredits",
-      "listPeriods"
-    ],
-    "usageEvents": [
       "create",
+      "createEntitlement",
+      "createSubscription",
       "get",
+      "getRevenue",
+      "grantCredits",
       "list",
-      "listAll"
-    ],
-    "usageSubscriptions": [
-      "create"
-    ],
-    "webhookDeliveryLogs": [
-      "get",
-      "list",
-      "listAll"
+      "listAll",
+      "listPeriods"
     ],
     "webhooks": [
       "create",
       "delete",
       "get",
+      "getDelivery",
       "list",
       "listAll",
+      "listDeliveries",
       "retryDelivery",
       "test",
       "update",
@@ -188,23 +181,24 @@
       "list",
       "list_all"
     ],
-    "customers": [
-      "create",
-      "create_portal_launch_session",
-      "delete",
-      "get",
-      "get_portal_audit",
-      "get_transactions",
-      "list",
-      "list_all",
-      "update"
-    ],
-    "discount_coupons": [
+    "coupons": [
       "create",
       "get",
       "get_performance",
       "list",
       "list_all"
+    ],
+    "customers": [
+      "create",
+      "create_portal_session",
+      "delete",
+      "get",
+      "get_portal_audit",
+      "get_subscriptions",
+      "get_transactions",
+      "list",
+      "list_all",
+      "update"
     ],
     "disputes": [
       "get",
@@ -230,15 +224,13 @@
       "list_all",
       "update"
     ],
-    "organization": [
-      "get_settings",
-      "update_settings"
-    ],
     "organizations": [
       "get",
       "get_metrics",
+      "get_radar_settings",
       "list",
-      "list_all"
+      "list_all",
+      "update_radar_settings"
     ],
     "payment_links": [
       "create",
@@ -281,18 +273,20 @@
       "list_assessments"
     ],
     "settlements": [
+      "create_instant",
       "find_all",
       "find_all_all",
-      "find_transactions"
+      "find_transactions",
+      "get_instant"
     ],
     "subscriptions": [
       "cancel",
       "change_plan",
-      "find_by_customer",
       "get",
+      "get_usage",
       "list",
       "list_all",
-      "uncancel",
+      "resume",
       "update"
     ],
     "transactions": [
@@ -300,34 +294,26 @@
       "list",
       "list_all"
     ],
-    "usage_billing": [
+    "usage": [
       "check_entitlement",
-      "create_entitlement",
-      "get_revenue",
-      "get_subscription_usage",
-      "grant_credits",
-      "list_periods"
-    ],
-    "usage_events": [
       "create",
+      "create_entitlement",
+      "create_subscription",
       "get",
+      "get_revenue",
+      "grant_credits",
       "list",
-      "list_all"
-    ],
-    "usage_subscriptions": [
-      "create"
-    ],
-    "webhook_delivery_logs": [
-      "get",
-      "list",
-      "list_all"
+      "list_all",
+      "list_periods"
     ],
     "webhooks": [
       "create",
       "delete",
       "get",
+      "get_delivery",
       "list",
       "list_all",
+      "list_deliveries",
       "retry_delivery",
       "test",
       "update",

@@ -19,8 +19,18 @@ class OrganizationsService(ClientBase):
         path = "/organizations/metrics"
         return self._request("GET", path)
 
+    def get_radar_settings(self) -> Any:
+        """Get Radar settings for the organization"""
+        path = "/organizations/radar-settings"
+        return self._request("GET", path)
+
     def list(self) -> Any:
         """Détails de l'organisation"""
         path = "/organizations"
         return self._request("GET", path)
+
+    def update_radar_settings(self, body: Optional[Dict[str, Any]] = None) -> Any:
+        """Update Radar settings"""
+        path = "/organizations/radar-settings"
+        return self._request("PATCH", path, data=body)
 

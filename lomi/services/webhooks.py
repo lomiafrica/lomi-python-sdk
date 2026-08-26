@@ -25,16 +25,27 @@ class WebhooksService(ClientBase):
         path = path.replace("{id}", str(id))
         return self._request("GET", path)
 
+    def get_delivery(self, id: str) -> Any:
+        """Obtenir un journal de livraison par ID"""
+        path = "/webhooks/deliveries/{id}"
+        path = path.replace("{id}", str(id))
+        return self._request("GET", path)
+
     def list(self) -> Any:
         """Lister les webhooks"""
         path = "/webhooks"
         return self._request("GET", path)
 
-    def retry_delivery(self, webhookId: str, logId: str) -> Any:
+    def list_deliveries(self, params: Optional[Dict[str, Any]] = None) -> Any:
+        """Lister les journaux de livraison"""
+        path = "/webhooks/deliveries"
+        return self._request("GET", path, params=params)
+
+    def retry_delivery(self, id: str, deliveryId: str) -> Any:
         """Relancer une livraison webhook"""
-        path = "/webhooks/{webhookId}/logs/{logId}/retry"
-        path = path.replace("{webhookId}", str(webhookId))
-        path = path.replace("{logId}", str(logId))
+        path = "/webhooks/{id}/deliveries/{deliveryId}/retry"
+        path = path.replace("{id}", str(id))
+        path = path.replace("{deliveryId}", str(deliveryId))
         return self._request("POST", path)
 
     def test(self, id: str) -> Any:

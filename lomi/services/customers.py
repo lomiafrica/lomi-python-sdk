@@ -13,9 +13,9 @@ class CustomersService(ClientBase):
         path = "/customers"
         return self._request("POST", path, data=body)
 
-    def create_portal_launch_session(self, id: str, body: Optional[Dict[str, Any]] = None) -> Any:
+    def create_portal_session(self, id: str, body: Optional[Dict[str, Any]] = None) -> Any:
         """Créer une session de lancement du portail client"""
-        path = "/customers/{id}/portal-launch-session"
+        path = "/customers/{id}/portal"
         path = path.replace("{id}", str(id))
         return self._request("POST", path, data=body)
 
@@ -36,6 +36,12 @@ class CustomersService(ClientBase):
         path = "/customers/{id}/portal-audit"
         path = path.replace("{id}", str(id))
         return self._request("GET", path, params=params)
+
+    def get_subscriptions(self, id: str) -> Any:
+        """Abonnements d’un client"""
+        path = "/customers/{id}/subscriptions"
+        path = path.replace("{id}", str(id))
+        return self._request("GET", path)
 
     def get_transactions(self, id: str) -> Any:
         """Transactions du client"""

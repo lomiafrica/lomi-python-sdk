@@ -20,15 +20,15 @@ class SubscriptionsService(ClientBase):
         path = path.replace("{id}", str(id))
         return self._request("POST", path, data=body)
 
-    def find_by_customer(self, customerId: str) -> Any:
-        """Abonnements d’un client"""
-        path = "/subscriptions/customer/{customerId}"
-        path = path.replace("{customerId}", str(customerId))
-        return self._request("GET", path)
-
     def get(self, id: str) -> Any:
         """Obtenir un abonnement par ID"""
         path = "/subscriptions/{id}"
+        path = path.replace("{id}", str(id))
+        return self._request("GET", path)
+
+    def get_usage(self, id: str) -> Any:
+        """Get meter usage for a subscription"""
+        path = "/subscriptions/{id}/usage"
         path = path.replace("{id}", str(id))
         return self._request("GET", path)
 
@@ -37,9 +37,9 @@ class SubscriptionsService(ClientBase):
         path = "/subscriptions"
         return self._request("GET", path, params=params)
 
-    def uncancel(self, id: str) -> Any:
+    def resume(self, id: str) -> Any:
         """Annuler une résiliation planifiée"""
-        path = "/subscriptions/{id}/uncancel"
+        path = "/subscriptions/{id}/resume"
         path = path.replace("{id}", str(id))
         return self._request("POST", path)
 
