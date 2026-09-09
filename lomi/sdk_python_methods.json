@@ -1,12 +1,22 @@
 {
-  "generatedAt": "2026-08-25T23:42:26.816Z",
+  "generatedAt": "2026-09-09T13:35:53.171Z",
   "language": "python",
   "naming": "ts_method_names_manifest_pep8_sdk_methods_are_snake_case_in_code",
   "sdk": {
+    "account": [
+      "deleteAccount",
+      "export"
+    ],
     "accounts": [
       "checkBalance",
       "getBalance",
       "getBalanceBreakdown"
+    ],
+    "apiKeys": [
+      "create",
+      "list",
+      "listAll",
+      "revoke"
     ],
     "charges": [
       "cancelCardCharge",
@@ -24,6 +34,7 @@
     ],
     "coupons": [
       "create",
+      "delete",
       "get",
       "getPerformance",
       "list",
@@ -44,7 +55,33 @@
     "disputes": [
       "get",
       "list",
+      "listAll",
+      "submitEvidence"
+    ],
+    "exports": [
+      "create",
+      "get",
+      "list",
       "listAll"
+    ],
+    "finance": [
+      "getAging",
+      "getCashflow",
+      "getReconcile",
+      "getSummary"
+    ],
+    "invoices": [
+      "create",
+      "createCheckoutSession",
+      "finalize",
+      "get",
+      "list",
+      "listAll",
+      "pdf",
+      "remind",
+      "send",
+      "update",
+      "voidInvoice"
     ],
     "logs": [
       "get",
@@ -66,6 +103,8 @@
       "update"
     ],
     "organizations": [
+      "create",
+      "createKey",
       "get",
       "getMetrics",
       "getRadarSettings",
@@ -74,14 +113,21 @@
       "updateRadarSettings"
     ],
     "paymentLinks": [
+      "archive",
+      "create",
+      "get",
+      "list",
+      "listAll",
+      "update"
+    ],
+    "paymentRequests": [
       "create",
       "get",
       "list",
       "listAll"
     ],
-    "paymentRequests": [
+    "payoutMethods": [
       "create",
-      "get",
       "list",
       "listAll"
     ],
@@ -93,11 +139,13 @@
     ],
     "products": [
       "addPrice",
+      "archive",
       "create",
       "get",
       "list",
       "listAll",
-      "setDefaultPrice"
+      "setDefaultPrice",
+      "update"
     ],
     "providers": [
       "list",
@@ -112,6 +160,12 @@
     "riskAssessments": [
       "findOne",
       "listAssessments"
+    ],
+    "settings": [
+      "getCheckout",
+      "getStorefront",
+      "updateCheckout",
+      "updateStorefront"
     ],
     "settlements": [
       "createInstant",
@@ -130,10 +184,27 @@
       "resume",
       "update"
     ],
-    "transactions": [
+    "supportRequests": [
+      "close",
+      "create",
       "get",
       "list",
       "listAll"
+    ],
+    "team": [
+      "invite",
+      "list",
+      "listAll",
+      "listRoles",
+      "remove",
+      "revokeInvite",
+      "updateRole"
+    ],
+    "transactions": [
+      "get",
+      "list",
+      "listAll",
+      "receiptPdf"
     ],
     "usage": [
       "checkEntitlement",
@@ -162,10 +233,20 @@
     ]
   },
   "python_methods": {
+    "account": [
+      "delete_account",
+      "export"
+    ],
     "accounts": [
       "check_balance",
       "get_balance",
       "get_balance_breakdown"
+    ],
+    "api_keys": [
+      "create",
+      "list",
+      "list_all",
+      "revoke"
     ],
     "charges": [
       "cancel_card_charge",
@@ -183,6 +264,7 @@
     ],
     "coupons": [
       "create",
+      "delete",
       "get",
       "get_performance",
       "list",
@@ -203,7 +285,33 @@
     "disputes": [
       "get",
       "list",
+      "list_all",
+      "submit_evidence"
+    ],
+    "exports": [
+      "create",
+      "get",
+      "list",
       "list_all"
+    ],
+    "finance": [
+      "get_aging",
+      "get_cashflow",
+      "get_reconcile",
+      "get_summary"
+    ],
+    "invoices": [
+      "create",
+      "create_checkout_session",
+      "finalize",
+      "get",
+      "list",
+      "list_all",
+      "pdf",
+      "remind",
+      "send",
+      "update",
+      "void_invoice"
     ],
     "logs": [
       "get",
@@ -225,6 +333,8 @@
       "update"
     ],
     "organizations": [
+      "create",
+      "create_key",
       "get",
       "get_metrics",
       "get_radar_settings",
@@ -233,14 +343,21 @@
       "update_radar_settings"
     ],
     "payment_links": [
+      "archive",
+      "create",
+      "get",
+      "list",
+      "list_all",
+      "update"
+    ],
+    "payment_requests": [
       "create",
       "get",
       "list",
       "list_all"
     ],
-    "payment_requests": [
+    "payout_methods": [
       "create",
-      "get",
       "list",
       "list_all"
     ],
@@ -252,11 +369,13 @@
     ],
     "products": [
       "add_price",
+      "archive",
       "create",
       "get",
       "list",
       "list_all",
-      "set_default_price"
+      "set_default_price",
+      "update"
     ],
     "providers": [
       "list",
@@ -271,6 +390,12 @@
     "risk_assessments": [
       "find_one",
       "list_assessments"
+    ],
+    "settings": [
+      "get_checkout",
+      "get_storefront",
+      "update_checkout",
+      "update_storefront"
     ],
     "settlements": [
       "create_instant",
@@ -289,10 +414,27 @@
       "resume",
       "update"
     ],
-    "transactions": [
+    "support_requests": [
+      "close",
+      "create",
       "get",
       "list",
       "list_all"
+    ],
+    "team": [
+      "invite",
+      "list",
+      "list_all",
+      "list_roles",
+      "remove",
+      "revoke_invite",
+      "update_role"
+    ],
+    "transactions": [
+      "get",
+      "list",
+      "list_all",
+      "receipt_pdf"
     ],
     "usage": [
       "check_entitlement",

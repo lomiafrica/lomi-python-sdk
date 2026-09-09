@@ -19,3 +19,9 @@ class TransactionsService(ClientBase):
         path = "/transactions"
         return self._request("GET", path, params=params)
 
+    def receipt_pdf(self, id: str) -> Any:
+        """Download receipt PDF"""
+        path = "/transactions/{id}/receipt.pdf"
+        path = path.replace("{id}", str(id))
+        return self._request("GET", path)
+

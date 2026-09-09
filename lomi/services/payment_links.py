@@ -8,6 +8,12 @@ from ..client_base import ClientBase
 class PaymentLinksService(ClientBase):
     """Public merchant API — generated from OpenAPI allowlist."""
 
+    def archive(self, id: str) -> Any:
+        """Archiver un lien de paiement"""
+        path = "/payment-links/{id}"
+        path = path.replace("{id}", str(id))
+        return self._request("DELETE", path)
+
     def create(self, body: Optional[Dict[str, Any]] = None) -> Any:
         """Créer un lien de paiement"""
         path = "/payment-links"
@@ -23,4 +29,10 @@ class PaymentLinksService(ClientBase):
         """Lister les liens de paiement"""
         path = "/payment-links"
         return self._request("GET", path, params=params)
+
+    def update(self, id: str, body: Optional[Dict[str, Any]] = None) -> Any:
+        """Mettre à jour un lien de paiement"""
+        path = "/payment-links/{id}"
+        path = path.replace("{id}", str(id))
+        return self._request("PATCH", path, data=body)
 

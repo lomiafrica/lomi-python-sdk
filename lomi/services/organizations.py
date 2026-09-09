@@ -8,6 +8,17 @@ from ..client_base import ClientBase
 class OrganizationsService(ClientBase):
     """Public merchant API — generated from OpenAPI allowlist."""
 
+    def create(self, body: Optional[Dict[str, Any]] = None) -> Any:
+        """Créer une organisation"""
+        path = "/organizations"
+        return self._request("POST", path, data=body)
+
+    def create_key(self, id: str, body: Optional[Dict[str, Any]] = None) -> Any:
+        """Créer une clé secrète pour une organisation"""
+        path = "/organizations/{id}/keys"
+        path = path.replace("{id}", str(id))
+        return self._request("POST", path, data=body)
+
     def get(self, id: str) -> Any:
         """Organisation par ID"""
         path = "/organizations/{id}"

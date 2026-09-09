@@ -19,3 +19,9 @@ class DisputesService(ClientBase):
         path = "/disputes"
         return self._request("GET", path, params=params)
 
+    def submit_evidence(self, id: str) -> Any:
+        """Submit dispute evidence"""
+        path = "/disputes/{id}/evidence"
+        path = path.replace("{id}", str(id))
+        return self._request("POST", path)
+

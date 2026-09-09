@@ -46,6 +46,40 @@ import lomi
 
 Execute `pytest` to run the tests.
 
+## lomi. Network (operators)
+
+Charge on behalf of Member Accounts (`acct_…`) and move funds with transfers. Hand-written resources live in `lomi/network.py`.
+
+```python
+from lomi import LomiClient
+
+lomi = LomiClient(api_key="lomi_sk_test_…")
+
+# Direct charges: Lomi-Account on every request
+as_member = LomiClient(api_key="lomi_sk_test_…", account="acct_123")
+as_member.checkout_sessions.create({**body, "application_fee_amount": 500})
+lomi.with_account("acct_123").checkout_sessions.create(body)   # scoped copy
+
+# Destination charge: operator charge, funds minus fee go to the member
+lomi.checkout_sessions.create({**body, "application_fee_amount": 500,
+                               "transfer_data": {"destination": "acct_123"}})
+
+# Transfers are two-step: preview, then confirm with the token (same Idempotency-Key)
+preview = lomi.transfers.create(amount=5000, currency_code="XOF", destination="acct_123",
+                                transfer_group="order_42", idempotency_key="order_42_payout")
+# preview["requires_confirmation"] is True -> call again with confirmation_token=preview["confirmation_token"],
+# or let the SDK run both calls:
+transfer = lomi.transfers.create_confirmed(amount=5000, currency_code="XOF", destination="acct_123")
+lomi.transfers.list(transfer_group="order_42")
+lomi.transfers.retrieve(transfer["id"])
+lomi.transfers.reverse_confirmed(transfer["id"], amount=1000)
+
+# Member helpers (operator key, no Lomi-Account) and member balance
+lomi.network.accounts.create_login_link("acct_123")["url"]
+lomi.network.account_sessions.create("acct_123", components={"onboarding": {"enabled": True}})
+lomi.balance.retrieve(account="acct_123")
+```
+
 ## Getting Started
 
 Please follow the [installation procedure](#installation--usage) and then run the following:

@@ -13,6 +13,12 @@ class CouponsService(ClientBase):
         path = "/coupons"
         return self._request("POST", path)
 
+    def delete(self, id: str) -> Any:
+        """Supprimer un coupon"""
+        path = "/coupons/{id}"
+        path = path.replace("{id}", str(id))
+        return self._request("DELETE", path)
+
     def get(self, id: str) -> Any:
         """Obtenir un coupon par ID"""
         path = "/coupons/{id}"

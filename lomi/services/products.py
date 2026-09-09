@@ -14,6 +14,12 @@ class ProductsService(ClientBase):
         path = path.replace("{id}", str(id))
         return self._request("POST", path)
 
+    def archive(self, id: str) -> Any:
+        """Archiver un produit"""
+        path = "/products/{id}"
+        path = path.replace("{id}", str(id))
+        return self._request("DELETE", path)
+
     def create(self) -> Any:
         """Créer un produit"""
         path = "/products"
@@ -36,4 +42,10 @@ class ProductsService(ClientBase):
         path = path.replace("{id}", str(id))
         path = path.replace("{priceId}", str(priceId))
         return self._request("POST", path)
+
+    def update(self, id: str) -> Any:
+        """Mettre à jour un produit"""
+        path = "/products/{id}"
+        path = path.replace("{id}", str(id))
+        return self._request("PATCH", path)
 

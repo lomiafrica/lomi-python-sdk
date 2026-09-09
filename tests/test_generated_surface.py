@@ -16,12 +16,16 @@ class TestSurface(unittest.TestCase):
         # spot-check newly added surfaces
         self.assertTrue(hasattr(c, "charges"))
         self.assertTrue(hasattr(c, "payment_links"))
+        # hand-written lomi. Network surface (lomi/network.py)
+        self.assertTrue(hasattr(c, "transfers"))
+        self.assertTrue(hasattr(c, "balance"))
+        self.assertTrue(hasattr(c.network, "account_sessions"))
 
         expected = sorted(
             name
             for name in attrs
             if name
-            not in ("api_key", "base_url", "session")
+            not in ("api_key", "base_url", "session", "lomi_account")
         )
 
         services = sorted(
