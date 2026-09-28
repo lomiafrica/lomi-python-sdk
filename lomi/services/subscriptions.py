@@ -43,9 +43,9 @@ class SubscriptionsService(ClientBase):
         path = path.replace("{id}", str(id))
         return self._request("POST", path)
 
-    def update(self, id: str) -> Any:
+    def update(self, id: str, body: Optional[Dict[str, Any]] = None) -> Any:
         """Mettre à jour un abonnement"""
         path = "/subscriptions/{id}"
         path = path.replace("{id}", str(id))
-        return self._request("PATCH", path)
+        return self._request("PATCH", path, data=body)
 

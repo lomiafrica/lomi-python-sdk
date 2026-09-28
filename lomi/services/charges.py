@@ -14,6 +14,12 @@ class ChargesService(ClientBase):
         path = path.replace("{id}", str(id))
         return self._request("POST", path)
 
+    def capture_card_charge(self, id: str, body: Optional[Dict[str, Any]] = None) -> Any:
+        """Capture card hold"""
+        path = "/charge/card/{id}/capture"
+        path = path.replace("{id}", str(id))
+        return self._request("POST", path, data=body)
+
     def create_card_charge(self, body: Optional[Dict[str, Any]] = None) -> Any:
         """Create card charge (client_secret)"""
         path = "/charge/card"

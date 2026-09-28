@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-09T13:35:53.171Z",
+  "generatedAt": "2026-09-28T19:28:41.020Z",
   "language": "python",
   "naming": "ts_method_names_manifest_pep8_sdk_methods_are_snake_case_in_code",
   "sdk": {
@@ -20,6 +20,7 @@
     ],
     "charges": [
       "cancelCardCharge",
+      "captureCardCharge",
       "createCardCharge",
       "createMtnCharge",
       "createSwitchCharge",
@@ -41,6 +42,7 @@
       "listAll"
     ],
     "customers": [
+      "block",
       "create",
       "createPortalSession",
       "delete",
@@ -50,6 +52,8 @@
       "getTransactions",
       "list",
       "listAll",
+      "topBySpend",
+      "unblock",
       "update"
     ],
     "disputes": [
@@ -145,7 +149,8 @@
       "list",
       "listAll",
       "setDefaultPrice",
-      "update"
+      "update",
+      "updatePricesBatch"
     ],
     "providers": [
       "list",
@@ -250,6 +255,7 @@
     ],
     "charges": [
       "cancel_card_charge",
+      "capture_card_charge",
       "create_card_charge",
       "create_mtn_charge",
       "create_switch_charge",
@@ -271,6 +277,7 @@
       "list_all"
     ],
     "customers": [
+      "block",
       "create",
       "create_portal_session",
       "delete",
@@ -280,6 +287,8 @@
       "get_transactions",
       "list",
       "list_all",
+      "top_by_spend",
+      "unblock",
       "update"
     ],
     "disputes": [
@@ -375,7 +384,8 @@
       "list",
       "list_all",
       "set_default_price",
-      "update"
+      "update",
+      "update_prices_batch"
     ],
     "providers": [
       "list",

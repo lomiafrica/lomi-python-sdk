@@ -18,15 +18,15 @@ class UsageService(ClientBase):
         path = "/usage/events"
         return self._request("POST", path)
 
-    def create_entitlement(self) -> Any:
+    def create_entitlement(self, body: Optional[Dict[str, Any]] = None) -> Any:
         """Create or update a plan entitlement feature"""
         path = "/usage/entitlements"
-        return self._request("POST", path)
+        return self._request("POST", path, data=body)
 
-    def create_subscription(self) -> Any:
+    def create_subscription(self, body: Optional[Dict[str, Any]] = None) -> Any:
         """Create a usage subscription"""
         path = "/usage/subscriptions"
-        return self._request("POST", path)
+        return self._request("POST", path, data=body)
 
     def get(self, id: str) -> Any:
         """Get a usage event"""
@@ -39,10 +39,10 @@ class UsageService(ClientBase):
         path = "/usage/revenue"
         return self._request("GET", path, params=params)
 
-    def grant_credits(self) -> Any:
+    def grant_credits(self, body: Optional[Dict[str, Any]] = None) -> Any:
         """Credit prepaid usage units to a customer meter wallet"""
         path = "/usage/credits"
-        return self._request("POST", path)
+        return self._request("POST", path, data=body)
 
     def list(self, params: Optional[Dict[str, Any]] = None) -> Any:
         """List usage events"""

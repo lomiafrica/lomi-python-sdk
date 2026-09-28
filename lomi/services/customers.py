@@ -8,6 +8,12 @@ from ..client_base import ClientBase
 class CustomersService(ClientBase):
     """Public merchant API — generated from OpenAPI allowlist."""
 
+    def block(self, id: str) -> Any:
+        """Bloquer un client"""
+        path = "/customers/{id}/block"
+        path = path.replace("{id}", str(id))
+        return self._request("POST", path)
+
     def create(self, body: Optional[Dict[str, Any]] = None) -> Any:
         """Créer un client"""
         path = "/customers"
@@ -53,6 +59,17 @@ class CustomersService(ClientBase):
         """Lister les clients"""
         path = "/customers"
         return self._request("GET", path, params=params)
+
+    def top_by_spend(self, params: Optional[Dict[str, Any]] = None) -> Any:
+        """Clients par volume"""
+        path = "/customers/top"
+        return self._request("GET", path, params=params)
+
+    def unblock(self, id: str) -> Any:
+        """Débloquer un client"""
+        path = "/customers/{id}/unblock"
+        path = path.replace("{id}", str(id))
+        return self._request("POST", path)
 
     def update(self, id: str, body: Optional[Dict[str, Any]] = None) -> Any:
         """Mettre à jour un client"""

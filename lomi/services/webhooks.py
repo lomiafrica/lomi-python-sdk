@@ -8,10 +8,10 @@ from ..client_base import ClientBase
 class WebhooksService(ClientBase):
     """Public merchant API — generated from OpenAPI allowlist."""
 
-    def create(self) -> Any:
+    def create(self, body: Optional[Dict[str, Any]] = None) -> Any:
         """Créer un webhook"""
         path = "/webhooks"
-        return self._request("POST", path)
+        return self._request("POST", path, data=body)
 
     def delete(self, id: str) -> Any:
         """Supprimer un webhook"""

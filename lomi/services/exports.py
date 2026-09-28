@@ -8,10 +8,10 @@ from ..client_base import ClientBase
 class ExportsService(ClientBase):
     """Public merchant API — generated from OpenAPI allowlist."""
 
-    def create(self) -> Any:
+    def create(self, body: Optional[Dict[str, Any]] = None) -> Any:
         """Create an export job"""
         path = "/exports"
-        return self._request("POST", path)
+        return self._request("POST", path, data=body)
 
     def get(self, id: str) -> Any:
         """Get export job status and download URL"""

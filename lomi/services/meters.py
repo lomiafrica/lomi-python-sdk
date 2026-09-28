@@ -8,10 +8,10 @@ from ..client_base import ClientBase
 class MetersService(ClientBase):
     """Public merchant API — generated from OpenAPI allowlist."""
 
-    def create(self) -> Any:
+    def create(self, body: Optional[Dict[str, Any]] = None) -> Any:
         """Create a meter"""
         path = "/meters"
-        return self._request("POST", path)
+        return self._request("POST", path, data=body)
 
     def get(self, id: str) -> Any:
         """Get a meter"""
@@ -31,9 +31,9 @@ class MetersService(ClientBase):
         path = "/meters"
         return self._request("GET", path, params=params)
 
-    def update(self, id: str) -> Any:
+    def update(self, id: str, body: Optional[Dict[str, Any]] = None) -> Any:
         """Update a meter"""
         path = "/meters/{id}"
         path = path.replace("{id}", str(id))
-        return self._request("PATCH", path)
+        return self._request("PATCH", path, data=body)
 

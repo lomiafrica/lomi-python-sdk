@@ -8,11 +8,11 @@ from ..client_base import ClientBase
 class ProductsService(ClientBase):
     """Public merchant API — generated from OpenAPI allowlist."""
 
-    def add_price(self, id: str) -> Any:
+    def add_price(self, id: str, body: Optional[Dict[str, Any]] = None) -> Any:
         """Ajouter un prix à un produit"""
         path = "/products/{id}/prices"
         path = path.replace("{id}", str(id))
-        return self._request("POST", path)
+        return self._request("POST", path, data=body)
 
     def archive(self, id: str) -> Any:
         """Archiver un produit"""
@@ -20,10 +20,10 @@ class ProductsService(ClientBase):
         path = path.replace("{id}", str(id))
         return self._request("DELETE", path)
 
-    def create(self) -> Any:
+    def create(self, body: Optional[Dict[str, Any]] = None) -> Any:
         """Créer un produit"""
         path = "/products"
-        return self._request("POST", path)
+        return self._request("POST", path, data=body)
 
     def get(self, id: str) -> Any:
         """Obtenir un produit par ID"""
@@ -43,9 +43,14 @@ class ProductsService(ClientBase):
         path = path.replace("{priceId}", str(priceId))
         return self._request("POST", path)
 
-    def update(self, id: str) -> Any:
+    def update(self, id: str, body: Optional[Dict[str, Any]] = None) -> Any:
         """Mettre à jour un produit"""
         path = "/products/{id}"
         path = path.replace("{id}", str(id))
-        return self._request("PATCH", path)
+        return self._request("PATCH", path, data=body)
+
+    def update_prices_batch(self, body: Optional[Dict[str, Any]] = None) -> Any:
+        """Update several product prices"""
+        path = "/products/prices/batch"
+        return self._request("POST", path, data=body)
 

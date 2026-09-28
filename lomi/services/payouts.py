@@ -8,10 +8,10 @@ from ..client_base import ClientBase
 class PayoutsService(ClientBase):
     """Public merchant API — generated from OpenAPI allowlist."""
 
-    def create(self) -> Any:
+    def create(self, body: Optional[Dict[str, Any]] = None) -> Any:
         """Créer un virement"""
         path = "/payouts"
-        return self._request("POST", path)
+        return self._request("POST", path, data=body)
 
     def get(self, id: str) -> Any:
         """Obtenir un virement"""

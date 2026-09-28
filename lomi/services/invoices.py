@@ -8,10 +8,10 @@ from ..client_base import ClientBase
 class InvoicesService(ClientBase):
     """Public merchant API — generated from OpenAPI allowlist."""
 
-    def create(self) -> Any:
+    def create(self, body: Optional[Dict[str, Any]] = None) -> Any:
         """Créer une facture"""
         path = "/invoices"
-        return self._request("POST", path)
+        return self._request("POST", path, data=body)
 
     def create_checkout_session(self, id: str) -> Any:
         """Créer ou récupérer une session de paiement de facture"""
@@ -54,11 +54,11 @@ class InvoicesService(ClientBase):
         path = path.replace("{id}", str(id))
         return self._request("POST", path)
 
-    def update(self, id: str) -> Any:
+    def update(self, id: str, body: Optional[Dict[str, Any]] = None) -> Any:
         """Modifier une facture"""
         path = "/invoices/{id}"
         path = path.replace("{id}", str(id))
-        return self._request("PATCH", path)
+        return self._request("PATCH", path, data=body)
 
     def void_invoice(self, id: str) -> Any:
         """Void an invoice"""
