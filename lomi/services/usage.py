@@ -39,11 +39,6 @@ class UsageService(ClientBase):
         path = "/usage/revenue"
         return self._request("GET", path, params=params)
 
-    def grant_credits(self, body: Optional[Dict[str, Any]] = None) -> Any:
-        """Credit prepaid usage units to a customer meter wallet"""
-        path = "/usage/credits"
-        return self._request("POST", path, data=body)
-
     def list(self, params: Optional[Dict[str, Any]] = None) -> Any:
         """List usage events"""
         path = "/usage/events"
