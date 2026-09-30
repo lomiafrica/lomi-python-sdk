@@ -46,3 +46,9 @@ class ChargesService(ClientBase):
         path = path.replace("{id}", str(id))
         return self._request("GET", path)
 
+    def increment_card_hold(self, id: str, body: Optional[Dict[str, Any]] = None) -> Any:
+        """Raise card hold"""
+        path = "/charge/card/{id}/increment"
+        path = path.replace("{id}", str(id))
+        return self._request("POST", path, data=body)
+

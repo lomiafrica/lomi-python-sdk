@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-28T19:28:41.020Z",
+  "generatedAt": "2026-09-30T14:06:36.641Z",
   "language": "python",
   "naming": "ts_method_names_manifest_pep8_sdk_methods_are_snake_case_in_code",
   "sdk": {
@@ -25,7 +25,8 @@
       "createMtnCharge",
       "createSwitchCharge",
       "createWaveCharge",
-      "getCardCharge"
+      "getCardCharge",
+      "incrementCardHold"
     ],
     "checkoutSessions": [
       "create",
@@ -260,7 +261,8 @@
       "create_mtn_charge",
       "create_switch_charge",
       "create_wave_charge",
-      "get_card_charge"
+      "get_card_charge",
+      "increment_card_hold"
     ],
     "checkout_sessions": [
       "create",

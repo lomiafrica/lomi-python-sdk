@@ -9,7 +9,7 @@ class CustomersService(ClientBase):
     """Public merchant API — generated from OpenAPI allowlist."""
 
     def block(self, id: str) -> Any:
-        """Bloquer un client"""
+        """Block a customer"""
         path = "/customers/{id}/block"
         path = path.replace("{id}", str(id))
         return self._request("POST", path)
@@ -66,7 +66,7 @@ class CustomersService(ClientBase):
         return self._request("GET", path, params=params)
 
     def unblock(self, id: str) -> Any:
-        """Débloquer un client"""
+        """Unblock a customer"""
         path = "/customers/{id}/unblock"
         path = path.replace("{id}", str(id))
         return self._request("POST", path)
