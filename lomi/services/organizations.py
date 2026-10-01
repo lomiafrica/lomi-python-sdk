@@ -40,6 +40,12 @@ class OrganizationsService(ClientBase):
         path = "/organizations"
         return self._request("GET", path)
 
+    def update(self, id: str, body: Optional[Dict[str, Any]] = None) -> Any:
+        """Set the support email"""
+        path = "/organizations/{id}"
+        path = path.replace("{id}", str(id))
+        return self._request("PATCH", path, data=body)
+
     def update_radar_settings(self, body: Optional[Dict[str, Any]] = None) -> Any:
         """Update Radar settings"""
         path = "/organizations/radar-settings"
