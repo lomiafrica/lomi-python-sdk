@@ -3,7 +3,7 @@
 """
     lomi. API
 
-    Payment processing API for francophone West African businesses.
+    Payment processing API for businesses in Africa.
 
     The version of the OpenAPI document: 1.1.0
     Contact: hello@lomi.africa
@@ -46,7 +46,7 @@ setup(
     license="MIT",
     long_description_content_type='text/markdown',
     long_description="""\
-    Payment processing API for francophone West African businesses.
+    Payment processing API for businesses in Africa.
     """,  # noqa: E501
     package_data={"lomi": ["py.typed"]},
 )
